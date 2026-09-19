@@ -1,0 +1,10 @@
+
+```yaml
+ Check failure on line 1 in .github/workflows/build-kernel.yml
+
+
+GitHub Actions
+/ .github/workflows/build-kernel.yml
+Invalid workflow file
+
+You have an error in your yaml syntax
