@@ -1,0 +1,69 @@
+```yaml
+name: GTA9 Kernel Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kernel source
+        uses: actions/checkout@v6
+        with:
+          ref: 15.0
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            bc \
+            bison \
+            flex \
+            build-essential \
+            clang \
+            lld \
+            llvm \
+            libssl-dev \
+            libelf-dev \
+            python3 \
+            cpio \
+            rsync \
+            zip \
+            unzip
+
+      - name: Check source
+        run: |
+          echo "=== Kernel version ==="
+          head -n 10 Makefile
+
+          echo "=== GTA9 defconfig ==="
+          test -f arch/arm64/configs/gta9_00_defconfig
+
+          echo "=== Build infrastructure ==="
+          if [ -f build/build.sh ]; then
+            echo "build/build.sh FOUND"
+          else
+            echo "build/build.sh NOT FOUND"
+          fi
+
+          echo "=== Vendor modules ==="
+          if [ -d vendor/mediatek/kernel_modules ]; then
+            echo "vendor/mediatek/kernel_modules FOUND"
+          else
+            echo "vendor/mediatek/kernel_modules NOT FOUND"
+          fi
+
+      - name: Generate GTA9 config
+        run: |
+          export ARCH=arm64
+          make gta9_00_defconfig
+
+      - name: Show final config
+        run: |
+          grep -E \
+            'CONFIG_ARCH_MEDIATEK|CONFIG_CUSTOM_PROJECT_OT11|CONFIG_MTK_COMBO|CONFIG_MTK_GPU|CONFIG_SAMSUNG_GKI_KERNEL|CONFIG_KSU' \
+            .config || true
+```
