@@ -1,0 +1,12 @@
+name: GTA9 Kernel Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test
+        run: echo "GTA9 workflow OK"
