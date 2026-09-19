@@ -1,0 +1,35 @@
+```yaml
+name: Build Kernel - AI Gemini
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: 15.0
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev bc git wget curl ccache rsync kmod cpio python3 lz4
+
+      - name: Detect GTA9 Config
+        run: |
+          echo "=== GTA9 CONFIG ==="
+          find arch/arm64/configs -type f \( -iname "*gta9*" -o -iname "*x110*" \) | head -20
+
+      - name: Check Vendor
+        run: |
+          echo "=== VENDOR CHECK ==="
+          if [ -d "vendor/mediatek/kernel_modules" ]; then
+            echo "Vendor modules FOUND"
+          else
+            echo "Vendor modules NOT FOUND"
+          fi
+```
