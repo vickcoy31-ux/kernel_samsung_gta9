@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout Repository
+      - name: Checkout Source Code
         uses: actions/checkout@v4
 
       - name: Install Dependencies
@@ -19,46 +19,51 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/kdrag0n/proton-clang.git clang
 
-      - name: Clone Source Code
-        run: |
-          git clone --depth=1 https://github.com/vickcoy31-ux/kernel_samsung_gta9/projects0xA11CE613/kernel_samsung_gta9.git kernel_source
-
       - name: Inject KernelSU Clean Setup
         run: |
-          cd kernel_source || exit 1
+          echo "=== 1. Bersihkan KSU lama ==="
           rm -rf drivers/kernelsu
           sed -i '/kernelsu/d' drivers/Kconfig
           sed -i '/kernelsu/d' drivers/Makefile
+          
+          echo "=== 2. Clone KernelSU ==="
           git clone --depth=1 https://github.com/tiann/KernelSU.git drivers/kernelsu
+          
+          echo "=== 3. Daftarkan Kconfig & Makefile ==="
           echo 'source "drivers/kernelsu/Kconfig"' >> drivers/Kconfig
           echo 'obj-y += kernelsu/' >> drivers/Makefile
+          
           ls -la drivers/kernelsu/Kconfig
 
       - name: Start Full Compilation
         run: |
-          cd kernel_source || exit 1
           export ARCH=arm64
           export SUBARCH=arm64
-          export PATH="$(pwd)/../clang/bin:$PATH"
+          export PATH="$(pwd)/clang/bin:$PATH"
           export CC=clang
           export CROSS_COMPILE=aarch64-linux-gnu-
           export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
           
+          echo "=== Mencari file defconfig GTA9/X110 ==="
           CONFIG_PATH=$(find arch/arm64/configs/ -type f \( -iname "*gta9*" -o -iname "*x110*" \) | head -n 1)
           
           if [ -n "$CONFIG_PATH" ]; then
             TARGET_CONFIG=$(echo "$CONFIG_PATH" | sed 's|arch/arm64/configs/||')
+            echo "Memakai config: $TARGET_CONFIG"
             make CC=clang $TARGET_CONFIG
           else
+            echo "Memakai defconfig fallback..."
             make CC=clang defconfig
           fi
           
           chmod +x scripts/config || true
           scripts/config --enable CONFIG_KSU || echo "CONFIG_KSU=y" >> .config
+          
+          echo "Memproses kompilasi kernel..."
           make -j$(nproc) CC=clang Image
 
       - name: Upload Final Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: samsung-x110-kernelsu-kernel
-          path: kernel_source/arch/arm64/boot/Image
+          path: arch/arm64/boot/Image
