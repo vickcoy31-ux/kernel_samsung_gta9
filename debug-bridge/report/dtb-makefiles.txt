@@ -1,0 +1,63 @@
+=== MEDIATEK DT MAKEFILE ===
+# SPDX-License-Identifier: GPL-2.0
+
+#dtb-y += mt6789.dtb
+#dtb-y += mt8781_gta9_eur_open_00.dtb
+
+ifneq ($(strip $(CONFIG_BUILD_ARM64_DTB_IMAGE_NAMES)),)
+dtb-y += $(addsuffix .dtb, $(notdir $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_IMAGE_NAMES))))
+endif
+
+ifeq ($(strip $(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE)), y)
+dtb-y += $(addsuffix .dtb, $(notdir $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES))))
+endif
+
+always          := $(dtb-y)
+subdir-y        := $(dts-dirs)
+clean-files     := *.dtb
+
+=== ARM64 DTS MAKEFILE ===
+# SPDX-License-Identifier: GPL-2.0
+dts-dirs += mediatek
+
+subdir-y          := $(dts-dirs)
+
+always            := $(DTB_LIST)
+
+targets += dtbs
+dtbs: $(addprefix $(obj)/, $(DTB_LIST))
+
+clean-files       := mediatek/*.dtb *.dtb*
+
+=== DRVGEN ===
+ifdef MTK_PLATFORM
+ifeq ($(strip $(CONFIG_ARM64)), y)
+PROJ_DT_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES))
+else
+PROJ_DT_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM_DTB_OVERLAY_IMAGE_NAMES))
+endif
+
+PROJ_DTB_NAMES := $(addsuffix .dtbo,$(PROJ_DT_NAMES))
+ABS_DTB_FILES := $(abspath $(addsuffix .dtbo,$(addprefix $(objtree)/arch/$(SRCARCH)/boot/dts/,$(PROJ_DT_NAMES))))
+
+my_dtbo_id := 0
+define mk_dtboimg_cfg
+echo $(1) >>$(2);\
+echo " id=$(my_dtbo_id)" >>$(2);\
+$(eval my_dtbo_id:=$(shell echo $$(($(my_dtbo_id)+1))))
+endef
+
+dtbs: $(objtree)/dtboimg.cfg
+
+$(objtree)/dtboimg.cfg: FORCE
+	rm -f $@.tmp
+	$(foreach f,$(ABS_DTB_FILES),$(call mk_dtboimg_cfg,$(f),$@.tmp))
+	if ! cmp -s $@.tmp $@; then \
+		mv $@.tmp $@; \
+	else \
+		rm $@.tmp; \
+	fi
+else
+dtbo:
+
+endif#MTK_PLATFORM

@@ -1,0 +1,7 @@
+=== CONFIG ===
+kernel/configs/ot11.config:147:CONFIG_BUILD_ARM64_DTB_IMAGE_NAMES="mediatek/mt6789"
+kernel/configs/ot11.config:148:CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES="mediatek/mt8781_gta9_eur_open_00"
+arch/arm64/boot/dts/mediatek/Makefile:6:ifneq ($(strip $(CONFIG_BUILD_ARM64_DTB_IMAGE_NAMES)),)
+arch/arm64/boot/dts/mediatek/Makefile:7:dtb-y += $(addsuffix .dtb, $(notdir $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_IMAGE_NAMES))))
+arch/arm64/boot/dts/mediatek/Makefile:10:ifeq ($(strip $(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE)), y)
+arch/arm64/boot/dts/mediatek/Makefile:11:dtb-y += $(addsuffix .dtb, $(notdir $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES))))

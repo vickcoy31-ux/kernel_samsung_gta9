@@ -1,0 +1,8 @@
+=== ODM_DIRS ===
+./debug-bridge/collect-gta9-debug.sh:24:    echo "=== ODM_DIRS ==="
+
+=== REFERENCES ===
+./debug-bridge/collect-gta9-debug.sh:24:    echo "=== ODM_DIRS ==="
+./debug-bridge/collect-gta9-debug.sh:25:    grep -R -n -E '(^|[[:space:]])ODM_DIRS[[:space:]]*=' \
+./debug-bridge/collect-gta9-debug.sh:29:    grep -R -n 'ODM_DIRS' \
+./setup/kernel/build/build.sh:970:for ODM_DIR in ${ODM_DIRS}; do

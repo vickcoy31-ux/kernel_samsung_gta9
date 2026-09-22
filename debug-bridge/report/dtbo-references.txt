@@ -1,0 +1,1734 @@
+=== DTBO REFERENCES ===
+Documentation/admin-guide/media/vivid.rst:1282:must be the same for the overlay to work. Otherwise VIDIOC_OVERLAY will return
+Documentation/admin-guide/media/vivid.rst:1346:same for the overlay to work. Otherwise VIDIOC_OVERLAY will return an error.
+Documentation/devicetree/overlay-notes.rst:127:tree node or its content beyond OF_OVERLAY_POST_REMOVE corresponding to the
+Documentation/fb/pxafb.rst:163:     FOR  - color format, as defined by OVERLAY_FORMAT_* in pxafb.h
+Documentation/filesystems/overlayfs.rst:234:- OVERLAY_FS_REDIRECT_DIR:
+Documentation/filesystems/overlayfs.rst:236:- OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW:
+Documentation/filesystems/overlayfs.rst:245:    See OVERLAY_FS_REDIRECT_DIR kernel config option above.
+Documentation/filesystems/overlayfs.rst:247:    See OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW kernel config option above.
+Documentation/filesystems/overlayfs.rst:379:CONFIG_OVERLAY_FS_METACOPY can be set/unset to enable/disable this feature
+Documentation/filesystems/overlayfs.rst:459:the kernel config option CONFIG_OVERLAY_FS_REDIRECT_DIR=y.
+Documentation/filesystems/overlayfs.rst:467:kernel config option CONFIG_OVERLAY_FS_INDEX=y.
+Documentation/filesystems/overlayfs.rst:477:CONFIG_OVERLAY_FS_XINO_AUTO=y.  Also implicitly enabled by using the same
+Documentation/userspace-api/media/v4l/buffer.rst:414:    * - ``V4L2_BUF_TYPE_VIDEO_OVERLAY``
+Documentation/userspace-api/media/v4l/buffer.rst:429:    * - ``V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY``
+Documentation/userspace-api/media/v4l/buffer.rst:697:    * - ``V4L2_MEMORY_OVERLAY``
+Documentation/userspace-api/media/v4l/dev-capture.rst:32:(``V4L2_CAP_VIDEO_OVERLAY``) and the :ref:`raw VBI capture <raw-vbi>`
+Documentation/userspace-api/media/v4l/dev-osd.rst:30:``V4L2_CAP_VIDEO_OUTPUT_OVERLAY`` flag in the ``capabilities`` field of
+Documentation/userspace-api/media/v4l/dev-osd.rst:122:``V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY`` and call the
+Documentation/userspace-api/media/v4l/dev-osd.rst:129:``V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY``, initialize the ``win``
+Documentation/userspace-api/media/v4l/dev-overlay.rst:45:``V4L2_CAP_VIDEO_OVERLAY`` flag in the ``capabilities`` field of struct
+Documentation/userspace-api/media/v4l/dev-overlay.rst:126:``V4L2_BUF_TYPE_VIDEO_OVERLAY`` and call the
+Documentation/userspace-api/media/v4l/dev-overlay.rst:133:``V4L2_BUF_TYPE_VIDEO_OVERLAY``, initialize the ``win`` substructure and
+Documentation/userspace-api/media/v4l/dev-overlay.rst:289::ref:`VIDIOC_OVERLAY` ioctl.
+Documentation/userspace-api/media/v4l/diff-v4l.rst:96:    * - ``VID_TYPE_OVERLAY``
+Documentation/userspace-api/media/v4l/diff-v4l.rst:97:      - ``V4L2_CAP_VIDEO_OVERLAY``
+Documentation/userspace-api/media/v4l/diff-v4l.rst:111:      - ``V4L2_FBUF_CAP_EXTERNOVERLAY`` *not set* in field ``capability``
+Documentation/userspace-api/media/v4l/diff-v4l.rst:447::ref:`VIDIOC_OVERLAY`.
+Documentation/userspace-api/media/v4l/hist-v4l2.rst:322:    ``V4L2_CAP_TUNER``, ``V4L2_CAP_VIDEO_OVERLAY`` replaced
+Documentation/userspace-api/media/v4l/hist-v4l2.rst:450:	  - ``V4L2_BUF_TYPE_VIDEO_OVERLAY``
+Documentation/userspace-api/media/v4l/hist-v4l2.rst:465:    :ref:`VIDIOC_ENUM_FMT` with type ``V4L2_BUF_TYPE_VIDEO_OVERLAY``.
+Documentation/userspace-api/media/v4l/hist-v4l2.rst:620:4. The :ref:`VIDIOC_OVERLAY` ioctl was incorrectly
+Documentation/userspace-api/media/v4l/hist-v4l2.rst:622:   while the write-read version was renamed to ``VIDIOC_OVERLAY_OLD``.
+Documentation/userspace-api/media/v4l/vidioc-cropcap.rst:60:	``V4L2_BUF_TYPE_VIDEO_OVERLAY``. See :c:type:`v4l2_buf_type` and the note below.
+Documentation/userspace-api/media/v4l/vidioc-enum-fmt.rst:94:	``V4L2_BUF_TYPE_VIDEO_OVERLAY``,
+Documentation/userspace-api/media/v4l/vidioc-enumoutput.rst:116:    * - ``V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-g-crop.rst:86:	``V4L2_BUF_TYPE_VIDEO_OVERLAY``. See :c:type:`v4l2_buf_type` and the note below.
+Documentation/userspace-api/media/v4l/vidioc-g-fbuf.rst:219:    * - ``V4L2_FBUF_CAP_EXTERNOVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-g-fbuf.rst:273:	driver that doesn't have the ``V4L2_FBUF_CAP_EXTERNOVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-g-fbuf.rst:275:    * - ``V4L2_FBUF_FLAG_OVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:4:.. _VIDIOC_OVERLAY:
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:7:ioctl VIDIOC_OVERLAY
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:13:VIDIOC_OVERLAY - Start or stop video overlay
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:18:.. c:macro:: VIDIOC_OVERLAY
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:20:``int ioctl(int fd, VIDIOC_OVERLAY, const int *argp)``
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:35:Applications call :ref:`VIDIOC_OVERLAY` to start or stop the overlay. It
+Documentation/userspace-api/media/v4l/vidioc-overlay.rst:41:``V4L2_BUF_TYPE_VIDEO_OVERLAY``.
+Documentation/userspace-api/media/v4l/vidioc-querycap.rst:168:    * - ``V4L2_CAP_VIDEO_OVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-querycap.rst:193:    * - ``V4L2_CAP_VIDEO_OUTPUT_OVERLAY``
+Documentation/userspace-api/media/v4l/vidioc-querycap.rst:199:	must clear the ``V4L2_CAP_VIDEO_OVERLAY`` flag and vice
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:44:replace symbol V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY :c:type:`v4l2_buf_type`
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:45:replace symbol V4L2_BUF_TYPE_VIDEO_OVERLAY :c:type:`v4l2_buf_type`
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:56:replace symbol V4L2_MEMORY_OVERLAY :c:type:`v4l2_memory`
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:158:replace define V4L2_CAP_VIDEO_OVERLAY device-capabilities
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:164:replace define V4L2_CAP_VIDEO_OUTPUT_OVERLAY device-capabilities
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:222:replace define V4L2_FBUF_CAP_EXTERNOVERLAY framebuffer-cap
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:232:replace define V4L2_FBUF_FLAG_OVERLAY framebuffer-flags
+Documentation/userspace-api/media/videodev2.h.rst.exceptions:355:replace define V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY output-type
+MAINTAINERS:13051:OPEN FIRMWARE AND DEVICE TREE OVERLAYS
+MAINTAINERS:13182:OVERLAY FILESYSTEM
+android/abi_gki_aarch64.xml:17605:        <enumerator name='V4L2_BUF_TYPE_VIDEO_OVERLAY' value='3'/>
+android/abi_gki_aarch64.xml:17610:        <enumerator name='V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY' value='8'/>
+android/abi_gki_aarch64.xml:44674:        <enumerator name='DRM_PLANE_TYPE_OVERLAY' value='0'/>
+arch/arm/configs/aspeed_g4_defconfig:229:CONFIG_OVERLAY_FS=y
+arch/arm/configs/aspeed_g5_defconfig:251:CONFIG_OVERLAY_FS=y
+arch/arm/configs/ezx_defconfig:244:CONFIG_FB_PXA_OVERLAY=y
+arch/arm/configs/imote2_defconfig:225:CONFIG_FB_PXA_OVERLAY=y
+arch/arm/configs/magician_defconfig:94:CONFIG_FB_PXA_OVERLAY=y
+arch/arm/configs/milbeaut_m10v_defconfig:69:CONFIG_OF_OVERLAY=y
+arch/arm/configs/pxa_defconfig:455:CONFIG_FB_PXA_OVERLAY=y
+arch/arm/configs/socfpga_defconfig:57:CONFIG_OF_OVERLAY=y
+arch/arm/include/asm/vmlinux.lds.h:127:	OVERLAY 0xffff0000 : NOCROSSREFS AT(__vectors_lma) {		\
+arch/arm64/Kconfig:2050:config BUILD_ARM64_DTB_OVERLAY_IMAGE
+arch/arm64/Kconfig:2066:config BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES
+arch/arm64/Kconfig:2068:        depends on BUILD_ARM64_DTB_OVERLAY_IMAGE
+arch/arm64/boot/dts/mediatek/Makefile:10:ifeq ($(strip $(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE)), y)
+arch/arm64/boot/dts/mediatek/Makefile:11:dtb-y += $(addsuffix .dtb, $(notdir $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES))))
+arch/arm64/boot/dts/mediatek/mt8781_gta9_eur_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/mediatek/mt8781_gta9_eur_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/mediatek/mt8781_gta9_usa_single_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/mediatek/mt8781_gta9_usa_single_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/mediatek/mt8781_gta9wifi_eur_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/mediatek/mt8781_gta9wifi_eur_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/mediatek/mt8781_gta9wifi_usa_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/mediatek/mt8781_gta9wifi_usa_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/samsung/mt8781_gta9_eur_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/samsung/mt8781_gta9_eur_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/samsung/mt8781_gta9_usa_single_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/samsung/mt8781_gta9_usa_single_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/samsung/mt8781_gta9wifi_eur_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/samsung/mt8781_gta9wifi_eur_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/boot/dts/samsung/mt8781_gta9wifi_usa_open_00.dts:15:	dtbo-hw_rev = <0x0>;
+arch/arm64/boot/dts/samsung/mt8781_gta9wifi_usa_open_00.dts:16:	dtbo-hw_rev_end = <0x20>;	
+arch/arm64/configs/defconfig:1063:CONFIG_OVERLAY_FS=m
+arch/arm64/configs/gki_defconfig:585:CONFIG_OVERLAY_FS=y
+arch/arm64/configs/gta9_defconfig:1796:# CONFIG_OF_OVERLAY is not set
+arch/arm64/configs/gta9_defconfig:7057:CONFIG_OVERLAY_FS=y
+arch/arm64/configs/gta9_defconfig:7058:# CONFIG_OVERLAY_FS_REDIRECT_DIR is not set
+arch/arm64/configs/gta9_defconfig:7059:CONFIG_OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW=y
+arch/arm64/configs/gta9_defconfig:7060:# CONFIG_OVERLAY_FS_INDEX is not set
+arch/arm64/configs/gta9_defconfig:7061:# CONFIG_OVERLAY_FS_XINO_AUTO is not set
+arch/arm64/configs/gta9_defconfig:7062:# CONFIG_OVERLAY_FS_METACOPY is not set
+arch/arm64/configs/rockpi4_defconfig:502:CONFIG_OVERLAY_FS=y
+arch/ia64/include/asm/uv/uv_mmrs.h:533:/*                    UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR                      */
+arch/ia64/include/asm/uv/uv_mmrs.h:535:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR 0x1600010UL
+arch/ia64/include/asm/uv/uv_mmrs.h:537:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_BASE_SHFT 28
+arch/ia64/include/asm/uv/uv_mmrs.h:538:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_BASE_MASK 0x00003ffff0000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:539:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_GR4_SHFT 48
+arch/ia64/include/asm/uv/uv_mmrs.h:540:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_GR4_MASK 0x0001000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:541:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_N_GRU_SHFT 52
+arch/ia64/include/asm/uv/uv_mmrs.h:542:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_N_GRU_MASK 0x00f0000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:543:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_ENABLE_SHFT 63
+arch/ia64/include/asm/uv/uv_mmrs.h:544:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_ENABLE_MASK 0x8000000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:561:/*                    UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR                      */
+arch/ia64/include/asm/uv/uv_mmrs.h:563:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR 0x1600028UL
+arch/ia64/include/asm/uv/uv_mmrs.h:565:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_BASE_SHFT 26
+arch/ia64/include/asm/uv/uv_mmrs.h:566:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_BASE_MASK 0x00003ffffc000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:567:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_DUAL_HUB_SHFT 46
+arch/ia64/include/asm/uv/uv_mmrs.h:568:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_DUAL_HUB_MASK 0x0000400000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:569:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_ENABLE_SHFT 63
+arch/ia64/include/asm/uv/uv_mmrs.h:570:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_ENABLE_MASK 0x8000000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:753:/*                       UVH_SI_ALIAS0_OVERLAY_CONFIG                        */
+arch/ia64/include/asm/uv/uv_mmrs.h:755:#define UVH_SI_ALIAS0_OVERLAY_CONFIG 0xc80008UL
+arch/ia64/include/asm/uv/uv_mmrs.h:757:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_BASE_SHFT 24
+arch/ia64/include/asm/uv/uv_mmrs.h:758:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_BASE_MASK 0x00000000ff000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:759:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_M_ALIAS_SHFT 48
+arch/ia64/include/asm/uv/uv_mmrs.h:760:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_M_ALIAS_MASK 0x001f000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:761:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_ENABLE_SHFT 63
+arch/ia64/include/asm/uv/uv_mmrs.h:762:#define UVH_SI_ALIAS0_OVERLAY_CONFIG_ENABLE_MASK 0x8000000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:777:/*                       UVH_SI_ALIAS1_OVERLAY_CONFIG                        */
+arch/ia64/include/asm/uv/uv_mmrs.h:779:#define UVH_SI_ALIAS1_OVERLAY_CONFIG 0xc80010UL
+arch/ia64/include/asm/uv/uv_mmrs.h:781:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_BASE_SHFT 24
+arch/ia64/include/asm/uv/uv_mmrs.h:782:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_BASE_MASK 0x00000000ff000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:783:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_M_ALIAS_SHFT 48
+arch/ia64/include/asm/uv/uv_mmrs.h:784:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_M_ALIAS_MASK 0x001f000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:785:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_ENABLE_SHFT 63
+arch/ia64/include/asm/uv/uv_mmrs.h:786:#define UVH_SI_ALIAS1_OVERLAY_CONFIG_ENABLE_MASK 0x8000000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:801:/*                       UVH_SI_ALIAS2_OVERLAY_CONFIG                        */
+arch/ia64/include/asm/uv/uv_mmrs.h:803:#define UVH_SI_ALIAS2_OVERLAY_CONFIG 0xc80018UL
+arch/ia64/include/asm/uv/uv_mmrs.h:805:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_BASE_SHFT 24
+arch/ia64/include/asm/uv/uv_mmrs.h:806:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_BASE_MASK 0x00000000ff000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:807:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_M_ALIAS_SHFT 48
+arch/ia64/include/asm/uv/uv_mmrs.h:808:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_M_ALIAS_MASK 0x001f000000000000UL
+arch/ia64/include/asm/uv/uv_mmrs.h:809:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_ENABLE_SHFT 63
+arch/ia64/include/asm/uv/uv_mmrs.h:810:#define UVH_SI_ALIAS2_OVERLAY_CONFIG_ENABLE_MASK 0x8000000000000000UL
+arch/ia64/uv/kernel/setup.c:33:	{UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR, UVH_SI_ALIAS0_OVERLAY_CONFIG},
+arch/ia64/uv/kernel/setup.c:34:	{UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR, UVH_SI_ALIAS1_OVERLAY_CONFIG},
+arch/ia64/uv/kernel/setup.c:35:	{UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR, UVH_SI_ALIAS2_OVERLAY_CONFIG},
+arch/ia64/uv/kernel/setup.c:95:	mmr_base = uv_read_local_mmr(UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR) &
+arch/m68k/configs/amiga_defconfig:469:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/apollo_defconfig:425:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/atari_defconfig:447:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/bvme6000_defconfig:418:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/hp300_defconfig:427:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/mac_defconfig:450:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/multi_defconfig:536:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/mvme147_defconfig:417:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/mvme16x_defconfig:418:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/q40_defconfig:436:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/stmark2_defconfig:82:CONFIG_OVERLAY_FS=y
+arch/m68k/configs/sun3_defconfig:420:CONFIG_OVERLAY_FS=m
+arch/m68k/configs/sun3x_defconfig:419:CONFIG_OVERLAY_FS=m
+arch/mips/configs/generic_defconfig:67:CONFIG_OVERLAY_FS=y
+arch/parisc/include/asm/grfioctl.h:41:#define CRX24_OVERLAY_PLANES	0x920825AA	/* Overlay planes on CRX24 */
+arch/powerpc/configs/powernv_defconfig:277:CONFIG_OVERLAY_FS=m
+arch/powerpc/configs/ppc64_defconfig:307:CONFIG_OVERLAY_FS=m
+arch/powerpc/configs/pseries_defconfig:255:CONFIG_OVERLAY_FS=m
+arch/s390/configs/debug_defconfig:615:CONFIG_OVERLAY_FS=m
+arch/s390/configs/defconfig:605:CONFIG_OVERLAY_FS=m
+arch/x86/configs/gki_defconfig:512:CONFIG_OVERLAY_FS=y
+arch/x86/include/asm/uv/uv_mmrs.h:3081:/*                     UVH_RH10_GAM_GRU_OVERLAY_CONFIG                       */
+arch/x86/include/asm/uv/uv_mmrs.h:3083:#define UVH_RH10_GAM_GRU_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3089:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	25
+arch/x86/include/asm/uv/uv_mmrs.h:3090:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x000ffffffe000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3091:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_N_GRU_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3092:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_N_GRU_MASK	0x0070000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3093:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3094:#define UVYH_RH10_GAM_GRU_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3096:#define UVH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3099:#define UVH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3135:/*                    UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0                     */
+arch/x86/include/asm/uv/uv_mmrs.h:3137:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0 (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3143:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:3144:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3145:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3146:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_MASK	0x03f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3147:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3148:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3150:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3153:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3192:/*                    UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1                     */
+arch/x86/include/asm/uv/uv_mmrs.h:3194:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1 (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3200:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:3201:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3202:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3203:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_MASK	0x03f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3204:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3205:#define UVYH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3207:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3210:#define UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3327:/*                     UVH_RH10_GAM_MMR_OVERLAY_CONFIG                       */
+arch/x86/include/asm/uv/uv_mmrs.h:3329:#define UVH_RH10_GAM_MMR_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3335:#define UVYH_RH10_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT	25
+arch/x86/include/asm/uv/uv_mmrs.h:3336:#define UVYH_RH10_GAM_MMR_OVERLAY_CONFIG_BASE_MASK	0x000ffffffe000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3337:#define UVYH_RH10_GAM_MMR_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3338:#define UVYH_RH10_GAM_MMR_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3340:#define UVH_RH10_GAM_MMR_OVERLAY_CONFIG_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3343:#define UVH_RH10_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3438:/*                    UVH_RH_GAM_ALIAS_0_OVERLAY_CONFIG                      */
+arch/x86/include/asm/uv/uv_mmrs.h:3440:#define UVH_RH_GAM_ALIAS_0_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3448:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_BASE_SHFT	24
+arch/x86/include/asm/uv/uv_mmrs.h:3449:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_BASE_MASK	0x00000000ff000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3450:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_M_ALIAS_SHFT	48
+arch/x86/include/asm/uv/uv_mmrs.h:3451:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_M_ALIAS_MASK	0x001f000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3452:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3453:#define UVXH_RH_GAM_ALIAS_0_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3565:/*                    UVH_RH_GAM_ALIAS_1_OVERLAY_CONFIG                      */
+arch/x86/include/asm/uv/uv_mmrs.h:3567:#define UVH_RH_GAM_ALIAS_1_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3575:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_BASE_SHFT	24
+arch/x86/include/asm/uv/uv_mmrs.h:3576:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_BASE_MASK	0x00000000ff000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3577:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_M_ALIAS_SHFT	48
+arch/x86/include/asm/uv/uv_mmrs.h:3578:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_M_ALIAS_MASK	0x001f000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3579:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3580:#define UVXH_RH_GAM_ALIAS_1_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3692:/*                    UVH_RH_GAM_ALIAS_2_OVERLAY_CONFIG                      */
+arch/x86/include/asm/uv/uv_mmrs.h:3694:#define UVH_RH_GAM_ALIAS_2_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3702:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_BASE_SHFT	24
+arch/x86/include/asm/uv/uv_mmrs.h:3703:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_BASE_MASK	0x00000000ff000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3704:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_M_ALIAS_SHFT	48
+arch/x86/include/asm/uv/uv_mmrs.h:3705:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_M_ALIAS_MASK	0x001f000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3706:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3707:#define UVXH_RH_GAM_ALIAS_2_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3819:/*                      UVH_RH_GAM_GRU_OVERLAY_CONFIG                        */
+arch/x86/include/asm/uv/uv_mmrs.h:3821:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG (					\
+arch/x86/include/asm/uv/uv_mmrs.h:3829:#define UVXH_RH_GAM_GRU_OVERLAY_CONFIG_N_GRU_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3830:#define UVXH_RH_GAM_GRU_OVERLAY_CONFIG_N_GRU_MASK	0x00f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3831:#define UVXH_RH_GAM_GRU_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3832:#define UVXH_RH_GAM_GRU_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3835:#define UV4AH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:3836:#define UV4AH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3839:#define UV4H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:3840:#define UV4H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x00003ffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3843:#define UV3H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	28
+arch/x86/include/asm/uv/uv_mmrs.h:3844:#define UV3H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x00003ffff0000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3845:#define UV3H_RH_GAM_GRU_OVERLAY_CONFIG_MODE_SHFT	62
+arch/x86/include/asm/uv/uv_mmrs.h:3846:#define UV3H_RH_GAM_GRU_OVERLAY_CONFIG_MODE_MASK	0x4000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3849:#define UV2H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	28
+arch/x86/include/asm/uv/uv_mmrs.h:3850:#define UV2H_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x00003ffff0000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3852:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3858:#define UVH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3929:/*                     UVH_RH_GAM_MMIOH_OVERLAY_CONFIG                       */
+arch/x86/include/asm/uv/uv_mmrs.h:3931:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3938:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_BASE_SHFT	27
+arch/x86/include/asm/uv/uv_mmrs.h:3939:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_BASE_MASK	0x00003ffff8000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3940:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_M_IO_SHFT	46
+arch/x86/include/asm/uv/uv_mmrs.h:3941:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_M_IO_MASK	0x000fc00000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3942:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_N_IO_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3943:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_N_IO_MASK	0x00f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3944:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3945:#define UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3947:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:3949:	uv_undefined("UVH_RH_GAM_MMIOH_OVERLAY_CONFIG_BASE_SHFT"))
+arch/x86/include/asm/uv/uv_mmrs.h:3986:/*                     UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0                      */
+arch/x86/include/asm/uv/uv_mmrs.h:3988:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0 (				\
+arch/x86/include/asm/uv/uv_mmrs.h:3994:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:3995:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3996:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:3997:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_MASK	0x03f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:3998:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:3999:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4002:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4003:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK	0x00003ffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4004:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_SHFT	46
+arch/x86/include/asm/uv/uv_mmrs.h:4005:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_MASK	0x000fc00000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4006:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4007:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4010:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4011:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK	0x00003ffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4012:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_SHFT	46
+arch/x86/include/asm/uv/uv_mmrs.h:4013:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_M_IO_MASK	0x000fc00000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4014:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4015:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG0_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4017:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4022:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4082:/*                     UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1                      */
+arch/x86/include/asm/uv/uv_mmrs.h:4084:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1 (				\
+arch/x86/include/asm/uv/uv_mmrs.h:4090:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4091:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4092:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_SHFT	52
+arch/x86/include/asm/uv/uv_mmrs.h:4093:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_MASK	0x03f0000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4094:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4095:#define UV4AH_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4098:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4099:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK	0x00003ffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4100:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_SHFT	46
+arch/x86/include/asm/uv/uv_mmrs.h:4101:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_MASK	0x000fc00000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4102:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4103:#define UV4H_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4106:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4107:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK	0x00003ffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4108:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_SHFT	46
+arch/x86/include/asm/uv/uv_mmrs.h:4109:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_M_IO_MASK	0x000fc00000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4110:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4111:#define UV3H_RH_GAM_MMIOH_OVERLAY_CONFIG1_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4113:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4118:#define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4296:/*                      UVH_RH_GAM_MMR_OVERLAY_CONFIG                        */
+arch/x86/include/asm/uv/uv_mmrs.h:4298:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG (					\
+arch/x86/include/asm/uv/uv_mmrs.h:4306:#define UVXH_RH_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4307:#define UVXH_RH_GAM_MMR_OVERLAY_CONFIG_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4313:#define UVXH_RH_GAM_MMR_OVERLAY_CONFIG_ENABLE_SHFT	63
+arch/x86/include/asm/uv/uv_mmrs.h:4314:#define UVXH_RH_GAM_MMR_OVERLAY_CONFIG_ENABLE_MASK	0x8000000000000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4317:#define UV4AH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT	26
+arch/x86/include/asm/uv/uv_mmrs.h:4318:#define UV4AH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK	0x000ffffffc000000UL
+arch/x86/include/asm/uv/uv_mmrs.h:4320:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_BASE_MASK (			\
+arch/x86/include/asm/uv/uv_mmrs.h:4327:#define UVH_RH_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT (			\
+arch/x86/kernel/apic/x2apic_uv_x.c:884:			m_overlay  = UVH_RH_GAM_ALIAS_0_OVERLAY_CONFIG;
+arch/x86/kernel/apic/x2apic_uv_x.c:888:			m_overlay  = UVH_RH_GAM_ALIAS_1_OVERLAY_CONFIG;
+arch/x86/kernel/apic/x2apic_uv_x.c:892:			m_overlay  = UVH_RH_GAM_ALIAS_2_OVERLAY_CONFIG;
+arch/x86/kernel/apic/x2apic_uv_x.c:934:	if (UVH_RH_GAM_GRU_OVERLAY_CONFIG) {
+arch/x86/kernel/apic/x2apic_uv_x.c:935:		gru.v = uv_read_local_mmr(UVH_RH_GAM_GRU_OVERLAY_CONFIG);
+arch/x86/kernel/apic/x2apic_uv_x.c:936:		shift = UVH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT;
+arch/x86/kernel/apic/x2apic_uv_x.c:937:		mask = UVH_RH_GAM_GRU_OVERLAY_CONFIG_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:938:	} else if (UVH_RH10_GAM_GRU_OVERLAY_CONFIG) {
+arch/x86/kernel/apic/x2apic_uv_x.c:939:		gru.v = uv_read_local_mmr(UVH_RH10_GAM_GRU_OVERLAY_CONFIG);
+arch/x86/kernel/apic/x2apic_uv_x.c:940:		shift = UVH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_SHFT;
+arch/x86/kernel/apic/x2apic_uv_x.c:941:		mask = UVH_RH10_GAM_GRU_OVERLAY_CONFIG_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:964:	if (UVH_RH10_GAM_MMR_OVERLAY_CONFIG) {
+arch/x86/kernel/apic/x2apic_uv_x.c:967:		mmr.v = uv_read_local_mmr(UVH_RH10_GAM_MMR_OVERLAY_CONFIG);
+arch/x86/kernel/apic/x2apic_uv_x.c:970:		shift = UVH_RH10_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT;
+arch/x86/kernel/apic/x2apic_uv_x.c:971:	} else if (UVH_RH_GAM_MMR_OVERLAY_CONFIG) {
+arch/x86/kernel/apic/x2apic_uv_x.c:974:		mmr.v = uv_read_local_mmr(UVH_RH_GAM_MMR_OVERLAY_CONFIG);
+arch/x86/kernel/apic/x2apic_uv_x.c:977:		shift = UVH_RH_GAM_MMR_OVERLAY_CONFIG_BASE_SHFT;
+arch/x86/kernel/apic/x2apic_uv_x.c:979:		pr_err("UV:%s:RH_GAM_MMR_OVERLAY_CONFIG MMR undefined?\n",
+arch/x86/kernel/apic/x2apic_uv_x.c:1019:		nasid_mask = UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:1027:		nasid_mask = UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:1035:		nasid_mask = UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:1043:		nasid_mask = UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_MASK;
+arch/x86/kernel/apic/x2apic_uv_x.c:1115:	if (UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0) {
+arch/x86/kernel/apic/x2apic_uv_x.c:1119:		mmioh0.v = uv_read_local_mmr(UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0);
+arch/x86/kernel/apic/x2apic_uv_x.c:1124:				UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT,
+arch/x86/kernel/apic/x2apic_uv_x.c:1127:		mmioh1.v = uv_read_local_mmr(UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1);
+arch/x86/kernel/apic/x2apic_uv_x.c:1132:				UVH_RH10_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT,
+arch/x86/kernel/apic/x2apic_uv_x.c:1137:	if (UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0) {
+arch/x86/kernel/apic/x2apic_uv_x.c:1141:		mmioh0.v = uv_read_local_mmr(UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0);
+arch/x86/kernel/apic/x2apic_uv_x.c:1150:				UVH_RH_GAM_MMIOH_OVERLAY_CONFIG0_BASE_SHFT,
+arch/x86/kernel/apic/x2apic_uv_x.c:1154:		mmioh1.v = uv_read_local_mmr(UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1);
+arch/x86/kernel/apic/x2apic_uv_x.c:1163:				UVH_RH_GAM_MMIOH_OVERLAY_CONFIG1_BASE_SHFT,
+arch/x86/kernel/apic/x2apic_uv_x.c:1170:	if (UVH_RH_GAM_MMIOH_OVERLAY_CONFIG) {
+arch/x86/kernel/apic/x2apic_uv_x.c:1173:		mmioh.v	= uv_read_local_mmr(UVH_RH_GAM_MMIOH_OVERLAY_CONFIG);
+arch/x86/kernel/apic/x2apic_uv_x.c:1178:				UV2H_RH_GAM_MMIOH_OVERLAY_CONFIG_BASE_SHFT,
+arch/x86/kernel/apic/x2apic_uv_x.c:1309:			uv_read_local_mmr(UVH_RH_GAM_MMR_OVERLAY_CONFIG) &
+drivers/ata/libata-acpi.c:585:		if (tf->command == ATA_CMD_CONF_OVERLAY &&
+drivers/ata/libata-eh.c:2172:		{ ATA_CMD_CONF_OVERLAY,		"DEVICE CONFIGURATION OVERLAY" },
+drivers/block/mtip32xx/mtip32xx.c:1691:	case ATA_CMD_CONF_OVERLAY:
+drivers/firmware/efi/Kconfig:277:config EFI_CUSTOM_SSDT_OVERLAYS
+drivers/firmware/efi/efi.c:198:#ifdef CONFIG_EFI_CUSTOM_SSDT_OVERLAYS
+drivers/fpga/of-fpga-region.c:352:	case OF_OVERLAY_PRE_APPLY:
+drivers/fpga/of-fpga-region.c:353:		pr_debug("%s OF_OVERLAY_PRE_APPLY\n", __func__);
+drivers/fpga/of-fpga-region.c:355:	case OF_OVERLAY_POST_APPLY:
+drivers/fpga/of-fpga-region.c:356:		pr_debug("%s OF_OVERLAY_POST_APPLY\n", __func__);
+drivers/fpga/of-fpga-region.c:358:	case OF_OVERLAY_PRE_REMOVE:
+drivers/fpga/of-fpga-region.c:359:		pr_debug("%s OF_OVERLAY_PRE_REMOVE\n", __func__);
+drivers/fpga/of-fpga-region.c:361:	case OF_OVERLAY_POST_REMOVE:
+drivers/fpga/of-fpga-region.c:362:		pr_debug("%s OF_OVERLAY_POST_REMOVE\n", __func__);
+drivers/fpga/of-fpga-region.c:374:	case OF_OVERLAY_PRE_APPLY:
+drivers/fpga/of-fpga-region.c:378:	case OF_OVERLAY_POST_REMOVE:
+drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:3381:				     DRM_PLANE_TYPE_OVERLAY, plane)) {
+drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:4059:	if (plane_state->plane->type != DRM_PLANE_TYPE_OVERLAY)
+drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6154:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6195:	if (plane->type == DRM_PLANE_TYPE_OVERLAY &&
+drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:8701:		if (plane->type == DRM_PLANE_TYPE_OVERLAY) {
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:243:	OVERLAY_BRIGHTNESS = 0,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:244:	OVERLAY_GAMMA,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:245:	OVERLAY_CONTRAST,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:246:	OVERLAY_SATURATION,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:247:	OVERLAY_HUE,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:248:	OVERLAY_ALPHA,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:249:	OVERLAY_ALPHA_PER_PIX,
+drivers/gpu/drm/amd/display/dc/inc/hw/opp.h:250:	OVERLAY_COLOR_TEMPERATURE
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:898:#define ixD2F1_PCIE_MC_OVERLAY_BAR0                                             0x20000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:899:#define ixD2F1_PCIE_MC_OVERLAY_BAR1                                             0x20000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1094:#define ixD2F2_PCIE_MC_OVERLAY_BAR0                                             0x30000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1095:#define ixD2F2_PCIE_MC_OVERLAY_BAR1                                             0x30000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1290:#define ixD2F3_PCIE_MC_OVERLAY_BAR0                                             0x40000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1291:#define ixD2F3_PCIE_MC_OVERLAY_BAR1                                             0x40000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1486:#define ixD2F4_PCIE_MC_OVERLAY_BAR0                                             0x50000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1487:#define ixD2F4_PCIE_MC_OVERLAY_BAR1                                             0x50000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1682:#define ixD2F5_PCIE_MC_OVERLAY_BAR0                                             0x60000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1683:#define ixD2F5_PCIE_MC_OVERLAY_BAR1                                             0x60000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1878:#define ixD3F1_PCIE_MC_OVERLAY_BAR0                                             0x70000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:1879:#define ixD3F1_PCIE_MC_OVERLAY_BAR1                                             0x70000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2074:#define ixD3F2_PCIE_MC_OVERLAY_BAR0                                             0x80000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2075:#define ixD3F2_PCIE_MC_OVERLAY_BAR1                                             0x80000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2270:#define ixD3F3_PCIE_MC_OVERLAY_BAR0                                             0x90000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2271:#define ixD3F3_PCIE_MC_OVERLAY_BAR1                                             0x90000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2466:#define ixD3F4_PCIE_MC_OVERLAY_BAR0                                             0xa0000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2467:#define ixD3F4_PCIE_MC_OVERLAY_BAR1                                             0xa0000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2662:#define ixD3F5_PCIE_MC_OVERLAY_BAR0                                             0xb0000c6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_d.h:2663:#define ixD3F5_PCIE_MC_OVERLAY_BAR1                                             0xb0000c7
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6645:#define D2F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6646:#define D2F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6647:#define D2F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6648:#define D2F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6649:#define D2F1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:6650:#define D2F1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8583:#define D2F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8584:#define D2F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8585:#define D2F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8586:#define D2F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8587:#define D2F2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:8588:#define D2F2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10521:#define D2F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10522:#define D2F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10523:#define D2F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10524:#define D2F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10525:#define D2F3_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:10526:#define D2F3_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12459:#define D2F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12460:#define D2F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12461:#define D2F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12462:#define D2F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12463:#define D2F4_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:12464:#define D2F4_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14397:#define D2F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14398:#define D2F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14399:#define D2F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14400:#define D2F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14401:#define D2F5_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:14402:#define D2F5_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16335:#define D3F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16336:#define D3F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16337:#define D3F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16338:#define D3F1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16339:#define D3F1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:16340:#define D3F1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18273:#define D3F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18274:#define D3F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18275:#define D3F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18276:#define D3F2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18277:#define D3F2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:18278:#define D3F2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20211:#define D3F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20212:#define D3F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20213:#define D3F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20214:#define D3F3_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20215:#define D3F3_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:20216:#define D3F3_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22149:#define D3F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22150:#define D3F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22151:#define D3F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22152:#define D3F4_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22153:#define D3F4_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:22154:#define D3F4_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24087:#define D3F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK 0x3f
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24088:#define D3F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24089:#define D3F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK 0xffffffc0
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24090:#define D3F5_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT 0x6
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24091:#define D3F5_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK 0xffffffff
+drivers/gpu/drm/amd/include/asic_reg/bif/bif_5_1_sh_mask.h:24092:#define D3F5_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT 0x0
+drivers/gpu/drm/amd/include/asic_reg/dce/dce_11_2_enum.h:5012:	BLND_CONTROL_BLND_ACTIVE_OVERLAY_ONLY_FALSE      = 0x0,
+drivers/gpu/drm/amd/include/asic_reg/dce/dce_11_2_enum.h:5013:	BLND_CONTROL_BLND_ACTIVE_OVERLAY_ONLY_TRUE       = 0x1,
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_default.h:501:#define cfgPSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                               0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_default.h:502:#define cfgPSWUSCFG0_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                               0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_default.h:14202:#define cfgPSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                               0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_default.h:14203:#define cfgPSWUSCFG0_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                               0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_offset.h:831:#define cfgPSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0                                                             0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_offset.h:832:#define cfgPSWUSCFG0_0_PCIE_MC_OVERLAY_BAR1                                                             0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_offset.h:10292:#define cfgPSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0                                                             0xfffe00000318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_offset.h:10293:#define cfgPSWUSCFG0_1_PCIE_MC_OVERLAY_BAR1                                                             0xfffe0000031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3457://PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3458:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                              0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3459:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                             0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3460:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3461:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                               0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3462://PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3463:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                             0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:3464:#define PSWUSCFG0_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                               0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88369://PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88370:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                              0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88371:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                             0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88372:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88373:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                               0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88374://PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88375:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                             0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_2_3_sh_mask.h:88376:#define PSWUSCFG0_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                               0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_default.h:148:#define cfgPCIE_MC_OVERLAY_BAR0_DEFAULT                                           0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_default.h:149:#define cfgPCIE_MC_OVERLAY_BAR1_DEFAULT                                           0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_offset.h:150:#define cfgPCIE_MC_OVERLAY_BAR0                                                                         0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_offset.h:151:#define cfgPCIE_MC_OVERLAY_BAR1                                                                         0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1088://PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1089:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                          0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1090:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                                         0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1091:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                            0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1092:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                           0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1093://PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1094:#define PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                                         0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_6_1_sh_mask.h:1095:#define PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                           0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2193:#define cfgBIFPLR0_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2194:#define cfgBIFPLR0_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2365:#define cfgBIFPLR1_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2366:#define cfgBIFPLR1_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2537:#define cfgBIFPLR2_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2538:#define cfgBIFPLR2_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2709:#define cfgBIFPLR3_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2710:#define cfgBIFPLR3_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2881:#define cfgBIFPLR4_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:2882:#define cfgBIFPLR4_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:3053:#define cfgBIFPLR5_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:3054:#define cfgBIFPLR5_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:3225:#define cfgBIFPLR6_0_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:3226:#define cfgBIFPLR6_0_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7375:#define smnBIFPLR0_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7376:#define smnBIFPLR0_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7547:#define smnBIFPLR1_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7548:#define smnBIFPLR1_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7719:#define smnBIFPLR2_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7720:#define smnBIFPLR2_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7891:#define smnBIFPLR3_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:7892:#define smnBIFPLR3_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8063:#define smnBIFPLR4_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8064:#define smnBIFPLR4_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8235:#define smnBIFPLR5_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8236:#define smnBIFPLR5_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8407:#define smnBIFPLR6_1_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:8408:#define smnBIFPLR6_1_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11271:#define smnBIFPLR0_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11272:#define smnBIFPLR0_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11443:#define smnBIFPLR1_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11444:#define smnBIFPLR1_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11615:#define smnBIFPLR2_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11616:#define smnBIFPLR2_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11787:#define smnBIFPLR3_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11788:#define smnBIFPLR3_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11959:#define smnBIFPLR4_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:11960:#define smnBIFPLR4_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:12131:#define smnBIFPLR5_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:12132:#define smnBIFPLR5_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:12303:#define smnBIFPLR6_2_PCIE_MC_OVERLAY_BAR0_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_default.h:12304:#define smnBIFPLR6_2_PCIE_MC_OVERLAY_BAR1_DEFAULT                                 0x00000000
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2463:#define cfgBIFPLR0_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2464:#define cfgBIFPLR0_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2636:#define cfgBIFPLR1_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2637:#define cfgBIFPLR1_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2809:#define cfgBIFPLR2_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2810:#define cfgBIFPLR2_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2982:#define cfgBIFPLR3_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:2983:#define cfgBIFPLR3_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3155:#define cfgBIFPLR4_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3156:#define cfgBIFPLR4_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3328:#define cfgBIFPLR5_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3329:#define cfgBIFPLR5_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3501:#define cfgBIFPLR6_0_PCIE_MC_OVERLAY_BAR0                                                               0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_offset.h:3502:#define cfgBIFPLR6_0_PCIE_MC_OVERLAY_BAR1                                                               0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16215://BIFPLR0_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16216:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16217:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16218:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16219:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16220://BIFPLR0_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16221:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:16222:#define BIFPLR0_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18059://BIFPLR1_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18060:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18061:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18062:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18063:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18064://BIFPLR1_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18065:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:18066:#define BIFPLR1_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19903://BIFPLR2_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19904:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19905:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19906:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19907:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19908://BIFPLR2_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19909:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:19910:#define BIFPLR2_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21747://BIFPLR3_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21748:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21749:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21750:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21751:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21752://BIFPLR3_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21753:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:21754:#define BIFPLR3_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23591://BIFPLR4_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23592:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23593:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23594:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23595:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23596://BIFPLR4_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23597:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:23598:#define BIFPLR4_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25435://BIFPLR5_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25436:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25437:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25438:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25439:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25440://BIFPLR5_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25441:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:25442:#define BIFPLR5_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27279://BIFPLR6_0_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27280:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27281:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27282:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27283:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27284://BIFPLR6_0_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27285:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:27286:#define BIFPLR6_0_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54205://BIFPLR0_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54206:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54207:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54208:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54209:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54210://BIFPLR0_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54211:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:54212:#define BIFPLR0_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56049://BIFPLR1_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56050:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56051:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56052:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56053:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56054://BIFPLR1_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56055:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:56056:#define BIFPLR1_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57893://BIFPLR2_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57894:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57895:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57896:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57897:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57898://BIFPLR2_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57899:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:57900:#define BIFPLR2_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59737://BIFPLR3_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59738:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59739:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59740:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59741:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59742://BIFPLR3_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59743:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:59744:#define BIFPLR3_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61581://BIFPLR4_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61582:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61583:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61584:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61585:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61586://BIFPLR4_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61587:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:61588:#define BIFPLR4_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63425://BIFPLR5_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63426:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63427:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63428:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63429:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63430://BIFPLR5_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63431:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:63432:#define BIFPLR5_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65269://BIFPLR6_1_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65270:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65271:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65272:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65273:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65274://BIFPLR6_1_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65275:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:65276:#define BIFPLR6_1_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89707://BIFPLR0_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89708:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89709:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89710:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89711:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89712://BIFPLR0_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89713:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:89714:#define BIFPLR0_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91551://BIFPLR1_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91552:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91553:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91554:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91555:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91556://BIFPLR1_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91557:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:91558:#define BIFPLR1_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93395://BIFPLR2_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93396:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93397:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93398:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93399:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93400://BIFPLR2_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93401:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:93402:#define BIFPLR2_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95239://BIFPLR3_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95240:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95241:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95242:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95243:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95244://BIFPLR3_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95245:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:95246:#define BIFPLR3_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97083://BIFPLR4_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97084:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97085:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97086:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97087:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97088://BIFPLR4_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97089:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:97090:#define BIFPLR4_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98927://BIFPLR5_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98928:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98929:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98930:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98931:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98932://BIFPLR5_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98933:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:98934:#define BIFPLR5_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100771://BIFPLR6_2_PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100772:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100773:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                               0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100774:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                  0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100775:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                 0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100776://BIFPLR6_2_PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100777:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                               0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_0_sh_mask.h:100778:#define BIFPLR6_2_PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                 0xFFFFFFFFL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_offset.h:150:#define cfgPCIE_MC_OVERLAY_BAR0                                                                         0x0318
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_offset.h:151:#define cfgPCIE_MC_OVERLAY_BAR1                                                                         0x031c
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1118://PCIE_MC_OVERLAY_BAR0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1119:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE__SHIFT                                                          0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1120:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0__SHIFT                                                         0x6
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1121:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_SIZE_MASK                                                            0x0000003FL
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1122:#define PCIE_MC_OVERLAY_BAR0__MC_OVERLAY_BAR_0_MASK                                                           0xFFFFFFC0L
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1123://PCIE_MC_OVERLAY_BAR1
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1124:#define PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1__SHIFT                                                         0x0
+drivers/gpu/drm/amd/include/asic_reg/nbio/nbio_7_4_sh_mask.h:1125:#define PCIE_MC_OVERLAY_BAR1__MC_OVERLAY_BAR_1_MASK                                                           0xFFFFFFFFL
+drivers/gpu/drm/amd/include/vega10_enum.h:6880:BLND_CONTROL_BLND_ACTIVE_OVERLAY_ONLY_FALSE  = 0x00000000,
+drivers/gpu/drm/amd/include/vega10_enum.h:6881:BLND_CONTROL_BLND_ACTIVE_OVERLAY_ONLY_TRUE  = 0x00000001,
+drivers/gpu/drm/arm/display/komeda/komeda_plane.c:245:	return is_primary ? DRM_PLANE_TYPE_PRIMARY : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/arm/malidp_planes.c:986:					DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/armada/armada_overlay.c:564:				       DRM_PLANE_TYPE_OVERLAY, NULL);
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_crtc.c:522:		    dc->layers[i]->desc->type == ATMEL_HLCDC_OVERLAY_LAYER) {
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:85:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:104:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:178:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:197:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:216:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:296:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:315:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:334:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:391:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:410:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:429:		.type = ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c:530:	    layer->desc->type == ATMEL_HLCDC_OVERLAY_LAYER ||
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.h:207:	ATMEL_HLCDC_OVERLAY_LAYER,
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c:772:	if (desc->type == ATMEL_HLCDC_OVERLAY_LAYER ||
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c:966:		type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c:1004:		    descs[i].type != ATMEL_HLCDC_OVERLAY_LAYER &&
+drivers/gpu/drm/drm_mode_config.c:213:	{ DRM_PLANE_TYPE_OVERLAY, "Overlay" },
+drivers/gpu/drm/drm_plane.c:350:	type = is_primary ? DRM_PLANE_TYPE_PRIMARY : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/drm_plane.c:506:		if (plane->type != DRM_PLANE_TYPE_OVERLAY &&
+drivers/gpu/drm/etnaviv/common.xml.h:442:#define chipMinorFeatures9_DC_OVERLAY_SCALING			0x10000000
+drivers/gpu/drm/exynos/exynos_drm_fimd.c:215:	DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/exynos/exynos_drm_fimd.c:216:	DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/exynos/exynos_drm_fimd.c:217:	DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/exynos/exynos_drm_vidi.c:89:	DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/exynos/exynos_mixer.c:143:		.type = DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/gma500/intel_bios.h:513:#define SWF10_OVERLAY_EN	(1<<19)
+drivers/gpu/drm/gma500/psb_drv.h:201:#define MDFLD_DSR_OVERLAY_0 	(1 << 4)
+drivers/gpu/drm/gma500/psb_drv.h:202:#define MDFLD_DSR_OVERLAY_2 	(1 << 5)
+drivers/gpu/drm/gma500/psb_intel_reg.h:650:#define DISPPLANE_SPRITE_ABOVE_OVERLAY		(1)
+drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c:136:			type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/i915/display/intel_display_debugfs.c:721:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/i915/display/intel_overlay.c:208:	/* WA_OVERLAY_CLKGATE:alm */
+drivers/gpu/drm/i915/display/intel_overlay.c:271:	*cs++ = MI_OVERLAY_FLIP | MI_OVERLAY_ON;
+drivers/gpu/drm/i915/display/intel_overlay.c:273:	*cs++ = MI_WAIT_FOR_EVENT | MI_WAIT_FOR_OVERLAY_FLIP;
+drivers/gpu/drm/i915/display/intel_overlay.c:294:				INTEL_FRONTBUFFER_OVERLAY(pipe));
+drivers/gpu/drm/i915/display/intel_overlay.c:301:				       INTEL_FRONTBUFFER_OVERLAY(pipe));
+drivers/gpu/drm/i915/display/intel_overlay.c:340:	*cs++ = MI_OVERLAY_FLIP | MI_OVERLAY_CONTINUE;
+drivers/gpu/drm/i915/display/intel_overlay.c:359:					INTEL_FRONTBUFFER_OVERLAY(overlay->crtc->pipe));
+drivers/gpu/drm/i915/display/intel_overlay.c:420:	*cs++ = MI_OVERLAY_FLIP | MI_OVERLAY_CONTINUE;
+drivers/gpu/drm/i915/display/intel_overlay.c:422:	*cs++ = MI_WAIT_FOR_EVENT | MI_WAIT_FOR_OVERLAY_FLIP;
+drivers/gpu/drm/i915/display/intel_overlay.c:425:	*cs++ = MI_OVERLAY_FLIP | MI_OVERLAY_OFF;
+drivers/gpu/drm/i915/display/intel_overlay.c:427:	*cs++ = MI_WAIT_FOR_EVENT | MI_WAIT_FOR_OVERLAY_FLIP;
+drivers/gpu/drm/i915/display/intel_overlay.c:461:	if (!(intel_de_read(dev_priv, GEN2_ISR) & I915_OVERLAY_PLANE_FLIP_PENDING_INTERRUPT)) {
+drivers/gpu/drm/i915/display/intel_overlay.c:476:	*cs++ = MI_WAIT_FOR_EVENT | MI_WAIT_FOR_OVERLAY_FLIP;
+drivers/gpu/drm/i915/display/intel_overlay.c:500:	switch (format & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:501:	case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:503:	case I915_OVERLAY_YUV411:
+drivers/gpu/drm/i915/display/intel_overlay.c:512:	switch (format & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:513:	case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:522:	switch (format & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:523:	case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:524:	case I915_OVERLAY_YUV420:
+drivers/gpu/drm/i915/display/intel_overlay.c:526:	case I915_OVERLAY_YUV411:
+drivers/gpu/drm/i915/display/intel_overlay.c:527:	case I915_OVERLAY_YUV410:
+drivers/gpu/drm/i915/display/intel_overlay.c:536:	switch (format & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:537:	case I915_OVERLAY_YUV420:
+drivers/gpu/drm/i915/display/intel_overlay.c:538:	case I915_OVERLAY_YUV410:
+drivers/gpu/drm/i915/display/intel_overlay.c:540:	case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:541:	case I915_OVERLAY_YUV411:
+drivers/gpu/drm/i915/display/intel_overlay.c:634:	/*if (params->format & I915_OVERLAY_YUV_PLANAR) {*/
+drivers/gpu/drm/i915/display/intel_overlay.c:716:	if (params->flags & I915_OVERLAY_YUV_PLANAR) {
+drivers/gpu/drm/i915/display/intel_overlay.c:717:		switch (params->flags & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:718:		case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:721:		case I915_OVERLAY_YUV420:
+drivers/gpu/drm/i915/display/intel_overlay.c:724:		case I915_OVERLAY_YUV411:
+drivers/gpu/drm/i915/display/intel_overlay.c:725:		case I915_OVERLAY_YUV410:
+drivers/gpu/drm/i915/display/intel_overlay.c:730:		switch (params->flags & I915_OVERLAY_DEPTH_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:731:		case I915_OVERLAY_YUV422:
+drivers/gpu/drm/i915/display/intel_overlay.c:734:		case I915_OVERLAY_YUV411:
+drivers/gpu/drm/i915/display/intel_overlay.c:739:		switch (params->flags & I915_OVERLAY_SWAP_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:740:		case I915_OVERLAY_NO_SWAP:
+drivers/gpu/drm/i915/display/intel_overlay.c:742:		case I915_OVERLAY_UV_SWAP:
+drivers/gpu/drm/i915/display/intel_overlay.c:745:		case I915_OVERLAY_Y_SWAP:
+drivers/gpu/drm/i915/display/intel_overlay.c:748:		case I915_OVERLAY_Y_AND_UV_SWAP:
+drivers/gpu/drm/i915/display/intel_overlay.c:810:	if (params->flags & I915_OVERLAY_YUV_PACKED)
+drivers/gpu/drm/i915/display/intel_overlay.c:822:	if (params->flags & I915_OVERLAY_YUV_PLANAR) {
+drivers/gpu/drm/i915/display/intel_overlay.c:990:	switch (rec->flags & I915_OVERLAY_TYPE_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:991:	case I915_OVERLAY_RGB:
+drivers/gpu/drm/i915/display/intel_overlay.c:995:	case I915_OVERLAY_YUV_PACKED:
+drivers/gpu/drm/i915/display/intel_overlay.c:1012:	case I915_OVERLAY_YUV_PLANAR:
+drivers/gpu/drm/i915/display/intel_overlay.c:1036:	tmp = (rec->flags & I915_OVERLAY_TYPE_MASK) == I915_OVERLAY_YUV_PLANAR ?
+drivers/gpu/drm/i915/display/intel_overlay.c:1042:	switch (rec->flags & I915_OVERLAY_TYPE_MASK) {
+drivers/gpu/drm/i915/display/intel_overlay.c:1043:	case I915_OVERLAY_RGB:
+drivers/gpu/drm/i915/display/intel_overlay.c:1044:	case I915_OVERLAY_YUV_PACKED:
+drivers/gpu/drm/i915/display/intel_overlay.c:1054:	case I915_OVERLAY_YUV_PLANAR:
+drivers/gpu/drm/i915/display/intel_overlay.c:1091:	if (!(params->flags & I915_OVERLAY_ENABLE)) {
+drivers/gpu/drm/i915/display/intel_overlay.c:1254:	if (!(attrs->flags & I915_OVERLAY_UPDATE_ATTRS)) {
+drivers/gpu/drm/i915/display/intel_overlay.c:1283:		if (attrs->flags & I915_OVERLAY_UPDATE_GAMMA) {
+drivers/gpu/drm/i915/display/intel_overlay.c:1304:	overlay->color_key_enabled = (attrs->flags & I915_OVERLAY_DISABLE_DEST_COLORKEY) == 0;
+drivers/gpu/drm/i915/display/intel_overlay.c:1358:	if (!HAS_OVERLAY(dev_priv))
+drivers/gpu/drm/i915/display/intel_overlay.c:1382:	ret = get_registers(overlay, OVERLAY_NEEDS_PHYSICAL(dev_priv));
+drivers/gpu/drm/i915/display/intel_overlay.h:6:#ifndef __INTEL_OVERLAY_H__
+drivers/gpu/drm/i915/display/intel_overlay.h:7:#define __INTEL_OVERLAY_H__
+drivers/gpu/drm/i915/display/intel_overlay.h:29:#endif /* __INTEL_OVERLAY_H__ */
+drivers/gpu/drm/i915/display/intel_sprite.c:2341:	if (!plane || plane->type != DRM_PLANE_TYPE_OVERLAY)
+drivers/gpu/drm/i915/display/intel_sprite.c:3073:		plane_type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/i915/display/intel_sprite.c:3221:				       DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/i915/gt/intel_gpu_commands.h:42:#define   MI_WAIT_FOR_OVERLAY_FLIP	(1<<16)
+drivers/gpu/drm/i915/gt/intel_gpu_commands.h:61:#define MI_OVERLAY_FLIP		MI_INSTR(0x11, 0)
+drivers/gpu/drm/i915/gt/intel_gpu_commands.h:62:#define   MI_OVERLAY_CONTINUE	(0x0<<21)
+drivers/gpu/drm/i915/gt/intel_gpu_commands.h:63:#define   MI_OVERLAY_ON		(0x1<<21)
+drivers/gpu/drm/i915/gt/intel_gpu_commands.h:64:#define   MI_OVERLAY_OFF	(0x2<<21)
+drivers/gpu/drm/i915/i915_drv.c:1719:	DRM_IOCTL_DEF_DRV(I915_OVERLAY_PUT_IMAGE, intel_overlay_put_image_ioctl, DRM_MASTER),
+drivers/gpu/drm/i915/i915_drv.c:1720:	DRM_IOCTL_DEF_DRV(I915_OVERLAY_ATTRS, intel_overlay_attrs_ioctl, DRM_MASTER),
+drivers/gpu/drm/i915/i915_drv.h:1283:#define INTEL_FRONTBUFFER_OVERLAY(pipe) \
+drivers/gpu/drm/i915/i915_drv.h:1668:#define HAS_OVERLAY(dev_priv)		 (INTEL_INFO(dev_priv)->display.has_overlay)
+drivers/gpu/drm/i915/i915_drv.h:1669:#define OVERLAY_NEEDS_PHYSICAL(dev_priv) \
+drivers/gpu/drm/i915/i915_getparam.c:35:	case I915_PARAM_HAS_OVERLAY:
+drivers/gpu/drm/i915/i915_reg.h:3183:#define I915_OVERLAY_PLANE_FLIP_PENDING_INTERRUPT	(1 << 9)
+drivers/gpu/drm/i915/i915_reg.h:5963:#define   PIPE_OVERLAY_UPDATED_ENABLE		(1UL << 16)
+drivers/gpu/drm/i915/i915_reg.h:5986:#define   PIPE_OVERLAY_UPDATED_STATUS		(1UL << 0)
+drivers/gpu/drm/i915/i915_reg.h:6595:#define   DISPPLANE_SPRITE_ABOVE_OVERLAY	(1)
+drivers/gpu/drm/i915/intel_pm.c:3160:		else if (plane->base.type == DRM_PLANE_TYPE_OVERLAY)
+drivers/gpu/drm/imx/dcss/dcss-plane.c:85:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/imx/dcss/dcss-plane.c:301:	if (plane->type == DRM_PLANE_TYPE_OVERLAY &&
+drivers/gpu/drm/imx/ipuv3-crtc.c:395:						DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/drm/imx/ipuv3-plane.c:355:	bool can_position = (plane->type == DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/drm/imx/ipuv3-plane.c:387:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/ingenic/ingenic-drm-drv.c:863:					       NULL, DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/ingenic/ingenic-ipu.c:756:				       NULL, DRM_PLANE_TYPE_OVERLAY, NULL);
+drivers/gpu/drm/mcde/mcde_display.c:52:	MCDE_OVERLAY_0 = 0,
+drivers/gpu/drm/mcde/mcde_display.c:53:	MCDE_OVERLAY_1,
+drivers/gpu/drm/mcde/mcde_display.c:54:	MCDE_OVERLAY_2,
+drivers/gpu/drm/mcde/mcde_display.c:55:	MCDE_OVERLAY_3,
+drivers/gpu/drm/mcde/mcde_display.c:56:	MCDE_OVERLAY_4,
+drivers/gpu/drm/mcde/mcde_display.c:57:	MCDE_OVERLAY_5,
+drivers/gpu/drm/mcde/mcde_display.c:349:	case MCDE_OVERLAY_0:
+drivers/gpu/drm/mcde/mcde_display.c:357:	case MCDE_OVERLAY_1:
+drivers/gpu/drm/mcde/mcde_display.c:365:	case MCDE_OVERLAY_2:
+drivers/gpu/drm/mcde/mcde_display.c:373:	case MCDE_OVERLAY_3:
+drivers/gpu/drm/mcde/mcde_display.c:381:	case MCDE_OVERLAY_4:
+drivers/gpu/drm/mcde/mcde_display.c:389:	case MCDE_OVERLAY_5:
+drivers/gpu/drm/mcde/mcde_display.c:977:	 * EXTSRC 0 -> OVERLAY 0 -> CHANNEL 0 -> FIFO A -> DSI FORMATTER 0
+drivers/gpu/drm/mcde/mcde_display.c:989:	mcde_configure_overlay(mcde, MCDE_OVERLAY_0, MCDE_EXTSRC_0,
+drivers/gpu/drm/mediatek/mediatek_v2/mtk_drm_crtc.c:10620:					     : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/mediatek/mtk_drm_crtc.c:712:		return DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/meson/meson_overlay.c:849:				 DRM_PLANE_TYPE_OVERLAY, "meson_overlay_plane");
+drivers/gpu/drm/meson/meson_overlay.h:7:#ifndef __MESON_OVERLAY_H
+drivers/gpu/drm/meson/meson_overlay.h:8:#define __MESON_OVERLAY_H
+drivers/gpu/drm/meson/meson_overlay.h:14:#endif /* __MESON_OVERLAY_H */
+drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c:617:			type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/msm/disp/dpu1/dpu_plane.h:107: * @type:  Plane type - PRIMARY/OVERLAY/CURSOR
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:95:#define MDP4_IRQ_OVERLAY0_DONE					0x00000001
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:96:#define MDP4_IRQ_OVERLAY1_DONE					0x00000002
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:109:#define MDP4_IRQ_OVERLAY2_DONE					0x40000000
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:302:#define REG_MDP4_OVERLAY_FLUSH					0x00018000
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:303:#define MDP4_OVERLAY_FLUSH_OVLP0				0x00000001
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:304:#define MDP4_OVERLAY_FLUSH_OVLP1				0x00000002
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:305:#define MDP4_OVERLAY_FLUSH_VG1					0x00000004
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:306:#define MDP4_OVERLAY_FLUSH_VG2					0x00000008
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:307:#define MDP4_OVERLAY_FLUSH_RGB1					0x00000010
+drivers/gpu/drm/msm/disp/mdp4/mdp4.xml.h:308:#define MDP4_OVERLAY_FLUSH_RGB2					0x00000020
+drivers/gpu/drm/msm/disp/mdp4/mdp4_crtc.c:93:	mdp4_write(mdp4_kms, REG_MDP4_OVERLAY_FLUSH, flush);
+drivers/gpu/drm/msm/disp/mdp4/mdp4_crtc.c:547:		!(mdp4_read(mdp4_kms, REG_MDP4_OVERLAY_FLUSH) &
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:64:	case VG1:      return MDP4_OVERLAY_FLUSH_VG1;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:65:	case VG2:      return MDP4_OVERLAY_FLUSH_VG2;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:66:	case RGB1:     return MDP4_OVERLAY_FLUSH_RGB1;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:67:	case RGB2:     return MDP4_OVERLAY_FLUSH_RGB2;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:75:	case 0:        return MDP4_OVERLAY_FLUSH_OVLP0;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.h:76:	case 1:        return MDP4_OVERLAY_FLUSH_OVLP1;
+drivers/gpu/drm/msm/disp/mdp4/mdp4_plane.c:381:	type = private_plane ? DRM_PLANE_TYPE_PRIMARY : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c:501:			type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/mxsfb/mxsfb_kms.c:606:					       mxsfb_modifiers, DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/nouveau/dispnv04/crtc.c:503:		NVPortPrivPtr pPriv = GET_OVERLAY_PRIVATE(dev);
+drivers/gpu/drm/nouveau/dispnv04/crtc.c:505:			regp->crtc_eng_ctrl |= NV_CRTC_FSEL_OVERLAY;
+drivers/gpu/drm/nouveau/dispnv04/nvreg.h:176:#	define NV_CRTC_FSEL_OVERLAY				(1 << 12)
+drivers/gpu/drm/nouveau/dispnv04/nvreg.h:511:#define NV_PVIDEO_OVERLAY		0x00680244
+drivers/gpu/drm/nouveau/dispnv04/overlay.c:151:	nvif_mask(dev, NV_PCRTC_ENGINE_CTRL + soff, NV_CRTC_FSEL_OVERLAY, NV_CRTC_FSEL_OVERLAY);
+drivers/gpu/drm/nouveau/dispnv04/overlay.c:152:	nvif_mask(dev, NV_PCRTC_ENGINE_CTRL + soff2, NV_CRTC_FSEL_OVERLAY, 0);
+drivers/gpu/drm/nouveau/dispnv04/overlay.c:431:	nvif_wr32(dev, NV_PVIDEO_OVERLAY, overlay);
+drivers/gpu/drm/nouveau/dispnv04/overlay.c:449:	nvif_mask(dev, NV_PVIDEO_OVERLAY, 1, 0);
+drivers/gpu/drm/nouveau/dispnv50/head.c:577:		ret = nv50_wndw_new(drm, DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:105:		case 8: bounds |= NVDEF(NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS, PIXEL_DEPTH, BPP_64); break;
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:106:		case 4: bounds |= NVDEF(NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS, PIXEL_DEPTH, BPP_32); break;
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:107:		case 2: bounds |= NVDEF(NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS, PIXEL_DEPTH, BPP_16); break;
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:112:		bounds |= NVDEF(NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS, USABLE, TRUE);
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:114:		bounds |= NVDEF(NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS, PIXEL_DEPTH, BPP_16);
+drivers/gpu/drm/nouveau/dispnv50/head907d.c:120:	PUSH_MTHD(push, NV907D, HEAD_SET_OVERLAY_USAGE_BOUNDS(i), bounds);
+drivers/gpu/drm/nouveau/dispnv50/oimm.c:34:		{ GK104_DISP_OVERLAY, 0, oimm507b_init },
+drivers/gpu/drm/nouveau/dispnv50/oimm.c:35:		{ GF110_DISP_OVERLAY, 0, oimm507b_init },
+drivers/gpu/drm/nouveau/dispnv50/oimm.c:36:		{ GT214_DISP_OVERLAY, 0, oimm507b_init },
+drivers/gpu/drm/nouveau/dispnv50/oimm.c:37:		{   G82_DISP_OVERLAY, 0, oimm507b_init },
+drivers/gpu/drm/nouveau/dispnv50/oimm.c:38:		{  NV50_DISP_OVERLAY, 0, oimm507b_init },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:35:		{ GK104_DISP_OVERLAY_CONTROL_DMA, 0, ovly917e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:36:		{ GF110_DISP_OVERLAY_CONTROL_DMA, 0, ovly907e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:37:		{ GT214_DISP_OVERLAY_CHANNEL_DMA, 0, ovly827e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:38:		{ GT200_DISP_OVERLAY_CHANNEL_DMA, 0, ovly827e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:39:		{   G82_DISP_OVERLAY_CHANNEL_DMA, 0, ovly827e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly.c:40:		{  NV50_DISP_OVERLAY_CHANNEL_DMA, 0, ovly507e_new },
+drivers/gpu/drm/nouveau/dispnv50/ovly507e.c:157:	ret = nv50_wndw_new_(func, drm->dev, DRM_PLANE_TYPE_OVERLAY,
+drivers/gpu/drm/nouveau/dispnv50/ovly507e.c:174:			       NV50_DISP_OVERLAY_CHANNEL_DMA_V0_NTFY_UEVENT,
+drivers/gpu/drm/nouveau/dispnv50/wndw.c:614:	       (plane->type == DRM_PLANE_TYPE_OVERLAY) ? 1 : 255;
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:54:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY0                                   2:2
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:55:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY0_DISABLE                           (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:56:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY0_ENABLE                            (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:57:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY1                                   10:10
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:58:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY1_DISABLE                           (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:59:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY1_ENABLE                            (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:60:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM0                               3:3
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:61:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM0_DISABLE                       (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:62:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM0_ENABLE                        (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:63:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM1                               11:11
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:64:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM1_DISABLE                       (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:65:#define NV507D_UPDATE_INTERLOCK_WITH_OVERLAY_IMM1_ENABLE                        (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:368:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS(a)                                 (0x00000904 + (a)*0x00000400)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:369:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE                             0:0
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:370:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE_FALSE                       (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:371:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE_TRUE                        (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:372:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH                        11:8
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:373:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_BPP_16                 (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl507d.h:374:#define NV507D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_BPP_32                 (0x00000003)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:159:#define NV907D_HEAD_SET_CRC_CONTROL_CONTROLLING_CHANNEL_OVERLAY                 (0x00000002)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:425:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS(a)                                 (0x000004D4 + (a)*0x00000300)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:426:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE                             0:0
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:427:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE_FALSE                       (0x00000000)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:428:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_USABLE_TRUE                        (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:429:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH                        11:8
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:430:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_BPP_16                 (0x00000001)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:431:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_BPP_32                 (0x00000003)
+drivers/gpu/drm/nouveau/include/nvhw/class/cl907d.h:432:#define NV907D_HEAD_SET_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_BPP_64                 (0x00000005)
+drivers/gpu/drm/nouveau/include/nvif/cl507b.h:11:#define NV50_DISP_OVERLAY_V0_NTFY_UEVENT                                   0x00
+drivers/gpu/drm/nouveau/include/nvif/cl507e.h:12:#define NV50_DISP_OVERLAY_CHANNEL_DMA_V0_NTFY_UEVENT                       0x00
+drivers/gpu/drm/nouveau/include/nvif/class.h:107:#define NV50_DISP_OVERLAY                             /* cl507b.h */ 0x0000507b
+drivers/gpu/drm/nouveau/include/nvif/class.h:108:#define G82_DISP_OVERLAY                              /* cl507b.h */ 0x0000827b
+drivers/gpu/drm/nouveau/include/nvif/class.h:109:#define GT214_DISP_OVERLAY                            /* cl507b.h */ 0x0000857b
+drivers/gpu/drm/nouveau/include/nvif/class.h:110:#define GF110_DISP_OVERLAY                            /* cl507b.h */ 0x0000907b
+drivers/gpu/drm/nouveau/include/nvif/class.h:111:#define GK104_DISP_OVERLAY                            /* cl507b.h */ 0x0000917b
+drivers/gpu/drm/nouveau/include/nvif/class.h:139:#define NV50_DISP_OVERLAY_CHANNEL_DMA                 /* cl507e.h */ 0x0000507e
+drivers/gpu/drm/nouveau/include/nvif/class.h:140:#define G82_DISP_OVERLAY_CHANNEL_DMA                  /* cl507e.h */ 0x0000827e
+drivers/gpu/drm/nouveau/include/nvif/class.h:141:#define GT200_DISP_OVERLAY_CHANNEL_DMA                /* cl507e.h */ 0x0000837e
+drivers/gpu/drm/nouveau/include/nvif/class.h:142:#define GT214_DISP_OVERLAY_CHANNEL_DMA                /* cl507e.h */ 0x0000857e
+drivers/gpu/drm/nouveau/include/nvif/class.h:143:#define GF110_DISP_OVERLAY_CONTROL_DMA                /* cl507e.h */ 0x0000907e
+drivers/gpu/drm/nouveau/include/nvif/class.h:144:#define GK104_DISP_OVERLAY_CONTROL_DMA                /* cl507e.h */ 0x0000917e
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootg84.c:33:		{{0,0,G82_DISP_OVERLAY            }, nv50_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootg84.c:36:		{{0,0,G82_DISP_OVERLAY_CHANNEL_DMA},  g84_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootg94.c:33:		{{0,0,  G82_DISP_OVERLAY            },  nv50_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootg94.c:36:		{{0,0,GT200_DISP_OVERLAY_CHANNEL_DMA}, gt200_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgf119.c:33:		{{0,0,GF110_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgf119.c:36:		{{0,0,GF110_DISP_OVERLAY_CONTROL_DMA}, gf119_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgk104.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgk104.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gk104_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgk110.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgk110.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gk104_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgm107.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgm107.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gk104_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgm200.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgm200.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gk104_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgp100.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gf119_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgp100.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gk104_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgp102.c:33:		{{0,0,GK104_DISP_OVERLAY            }, gp102_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgp102.c:36:		{{0,0,GK104_DISP_OVERLAY_CONTROL_DMA}, gp102_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgt200.c:33:		{{0,0,  G82_DISP_OVERLAY            },  nv50_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgt200.c:36:		{{0,0,GT200_DISP_OVERLAY_CHANNEL_DMA}, gt200_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgt215.c:33:		{{0,0,GT214_DISP_OVERLAY            },  nv50_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootgt215.c:36:		{{0,0,GT214_DISP_OVERLAY_CHANNEL_DMA},   g84_disp_ovly_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootnv50.c:338:		{{0,0,NV50_DISP_OVERLAY            }, nv50_disp_oimm_new },
+drivers/gpu/drm/nouveau/nvkm/engine/disp/rootnv50.c:341:		{{0,0,NV50_DISP_OVERLAY_CHANNEL_DMA}, nv50_disp_ovly_new },
+drivers/gpu/drm/omapdrm/omap_drv.c:270:					 : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/panel/ot11/lcd_jd9366tc_xx_hkc_video.c:588:    pr_info("%s+ parse dtbo\n", __func__);
+drivers/gpu/drm/panel/ot11/lcd_nl9951_gx_boe_video.c:597:    pr_err("%s+ parse dtbo\n", __func__);
+drivers/gpu/drm/panel/panel-nt36672c-s2dps01-vdo.c:180:	ret = of_property_read_u32(root, "dtbo-hw_rev", &hw_version);
+drivers/gpu/drm/panel/panel-nt36672c-s2dps01-vdo.c:182:		pr_info("get dtbo-hw_rev fail:%d\n", ret);
+drivers/gpu/drm/qxl/qxl_dev.h:622:	QXL_OP_OVERLAY			 = 0x32,
+drivers/gpu/drm/radeon/r100.c:3799:		C_000420_OV0_OVERLAY_EN & RREG32(R_000420_OV0_SCALE_CNTL));
+drivers/gpu/drm/radeon/r100d.h:651:#define   S_000420_OV0_OVERLAY_EN(x)                   (((x) & 0x1) << 30)
+drivers/gpu/drm/radeon/r100d.h:652:#define   G_000420_OV0_OVERLAY_EN(x)                   (((x) >> 30) & 0x1)
+drivers/gpu/drm/radeon/r100d.h:653:#define   C_000420_OV0_OVERLAY_EN                      0xBFFFFFFF
+drivers/gpu/drm/rcar-du/Kconfig:46:	select OF_OVERLAY
+drivers/gpu/drm/rcar-du/rcar_du_of.c:37:#define RCAR_DU_OF_OVERLAY(type, soc)					\
+drivers/gpu/drm/rcar-du/rcar_du_of.c:112:	RCAR_DU_OF_OVERLAY(lvds, r8a7790),
+drivers/gpu/drm/rcar-du/rcar_du_of.c:113:	RCAR_DU_OF_OVERLAY(lvds, r8a7791),
+drivers/gpu/drm/rcar-du/rcar_du_of.c:114:	RCAR_DU_OF_OVERLAY(lvds, r8a7793),
+drivers/gpu/drm/rcar-du/rcar_du_of.c:115:	RCAR_DU_OF_OVERLAY(lvds, r8a7795),
+drivers/gpu/drm/rcar-du/rcar_du_of.c:116:	RCAR_DU_OF_OVERLAY(lvds, r8a7796),
+drivers/gpu/drm/rcar-du/rcar_du_plane.c:771:					 : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/rcar-du/rcar_du_vsp.c:389:					 : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/rockchip/rockchip_drm_vop.c:1825:		if (win_data->type != DRM_PLANE_TYPE_OVERLAY)
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:309:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:419:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:664:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:666:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:762:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:764:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:899:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:901:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/rockchip/rockchip_vop_reg.c:1028:	  .type = DRM_PLANE_TYPE_OVERLAY },
+drivers/gpu/drm/sti/sti_compositor.c:100:		enum drm_plane_type plane_type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/sti/sti_hqvdp.c:1307:				       NULL, DRM_PLANE_TYPE_OVERLAY, NULL);
+drivers/gpu/drm/sti/sti_hqvdp.c:1315:	sti_plane_init_property(&hqvdp->plane, DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/drm/sti/sti_plane.c:107:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/sti/sti_plane.c:128:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/stm/ltdc.c:1042:		overlay = ltdc_plane_create(ddev, DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/drm/sun4i/sun4i_crtc.c:245:		if (plane->type == DRM_PLANE_TYPE_OVERLAY)
+drivers/gpu/drm/sun4i/sun4i_layer.c:245:		enum drm_plane_type type = i ? DRM_PLANE_TYPE_OVERLAY : DRM_PLANE_TYPE_PRIMARY;
+drivers/gpu/drm/sun4i/sun8i_ui_layer.c:344:	enum drm_plane_type type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/sun4i/sun8i_vi_layer.c:529:				       NULL, DRM_PLANE_TYPE_OVERLAY, NULL);
+drivers/gpu/drm/tegra/dc.c:1096:		type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/tegra/hub.c:556:	enum drm_plane_type type = DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/tidss/tidss_kms.c:239:					    DRM_PLANE_TYPE_OVERLAY, crtc_mask,
+drivers/gpu/drm/vc4/vc4_plane.c:1409:			vc4_plane_init(drm, DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:33:#ifndef _SVGA_OVERLAY_H_
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:34:#define _SVGA_OVERLAY_H_
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:47:   SVGA_OVERLAY_FORMAT_INVALID = 0,
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:48:   SVGA_OVERLAY_FORMAT_YV12 = VMWARE_FOURCC_YV12,
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:49:   SVGA_OVERLAY_FORMAT_YUY2 = VMWARE_FOURCC_YUY2,
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:50:   SVGA_OVERLAY_FORMAT_UYVY = VMWARE_FOURCC_UYVY,
+drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h:200:#endif /* _SVGA_OVERLAY_H_ */
+drivers/gpu/drm/vmwgfx/device_include/svga_reg.h:1382:#define SVGA_NUM_OVERLAY_UNITS 32
+drivers/gpu/drm/vmwgfx/vmwgfx_overlay.c:36:#define VMW_OVERLAY_CAP_MASK (SVGA_FIFO_CAP_VIDEO | SVGA_FIFO_CAP_ESCAPE)
+drivers/gpu/drm/vmwgfx/vmwgfx_overlay.c:424:		((dev_priv->fifo.capabilities & VMW_OVERLAY_CAP_MASK) ==
+drivers/gpu/drm/vmwgfx/vmwgfx_overlay.c:425:		 VMW_OVERLAY_CAP_MASK));
+drivers/gpu/drm/xlnx/zynqmp_disp.c:1242:		     ? DRM_PLANE_TYPE_PRIMARY : DRM_PLANE_TYPE_OVERLAY;
+drivers/gpu/drm/zte/zx_plane.c:468:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/zte/zx_plane.c:513:	case DRM_PLANE_TYPE_OVERLAY:
+drivers/gpu/drm/zte/zx_vou.c:663:		ret = zx_plane_init(drm, zplane, DRM_PLANE_TYPE_OVERLAY);
+drivers/gpu/mediatek/gpufreq/v1/mt6853/mtk_gpufreq_plat.c:3592:#if defined(CONFIG_ARM64) && defined(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES)
+drivers/gpu/mediatek/gpufreq/v1/mt6853/mtk_gpufreq_plat.c:3593:	if (strstr(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES,
+drivers/gpu/mediatek/gpufreq/v1/mt6853/mtk_gpufreq_plat.c:3596:			__func__, CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES);
+drivers/gpu/mediatek/gpufreq/v1/mt6873/mtk_gpufreq_plat.c:3717:#if defined(CONFIG_ARM64) && defined(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES)
+drivers/gpu/mediatek/gpufreq/v1/mt6873/mtk_gpufreq_plat.c:3718:	if (strstr(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES,
+drivers/gpu/mediatek/gpufreq/v1/mt6873/mtk_gpufreq_plat.c:3721:			__func__, CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES);
+drivers/gpu/mediatek/gpufreq/v1/mt6885/mtk_gpufreq_plat.c:3586:#if defined(CONFIG_ARM64) && defined(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES)
+drivers/gpu/mediatek/gpufreq/v1/mt6885/mtk_gpufreq_plat.c:3587:	if (strstr(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES,
+drivers/gpu/mediatek/gpufreq/v1/mt6885/mtk_gpufreq_plat.c:3590:			__func__, CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES);
+drivers/input/touchscreen/GTP1151/gt1x_update.c:87:#define FW_SECTION_TYPE_SS51_PATCH_OVERLAY     0x03
+drivers/input/touchscreen/GTP1151/gt1x_update.c:91:#define FW_SECTION_TYPE_GESTURE_OVERLAY        0x07
+drivers/input/touchscreen/ot11/hxchipset/himax_common.h:180:/*#define HX_ALG_OVERLAY*/
+drivers/input/touchscreen/ot11/hxchipset/himax_common.h:182:/*#define HX_CODE_OVERLAY*/
+drivers/input/touchscreen/ot11/hxchipset/himax_ic_incell_core.c:3971: *#if defined(HX_CODE_OVERLAY)
+drivers/input/touchscreen/ot11/hxchipset/himax_ic_incell_core.c:4108: * #if defined(HX_CODE_OVERLAY)
+drivers/media/common/saa7146/saa7146_fops.c:609:	vfd->device_caps = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_VIDEO_OVERLAY |
+drivers/media/common/saa7146/saa7146_fops.c:617:			~(V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_VIDEO_OVERLAY | V4L2_CAP_AUDIO);
+drivers/media/common/saa7146/saa7146_video.c:17:#define IS_OVERLAY_ACTIVE(fh) \
+drivers/media/common/saa7146/saa7146_video.c:18:	(((vv->video_status & STATUS_OVERLAY) != 0) && (vv->video_fh == fh))
+drivers/media/common/saa7146/saa7146_video.c:118:	if (IS_OVERLAY_ACTIVE(fh) != 0) {
+drivers/media/common/saa7146/saa7146_video.c:151:	vv->video_status = STATUS_OVERLAY;
+drivers/media/common/saa7146/saa7146_video.c:172:	if ((vv->video_status & STATUS_OVERLAY) == 0) {
+drivers/media/common/saa7146/saa7146_video.c:335:	if ((vv->video_status & STATUS_OVERLAY) != 0) {
+drivers/media/common/saa7146/saa7146_video.c:447:	cap->capabilities = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_VIDEO_OVERLAY |
+drivers/media/common/saa7146/saa7146_video.c:487:	if (IS_OVERLAY_ACTIVE(fh) != 0) {
+drivers/media/common/saa7146/saa7146_video.c:562:	if ((vv->video_status & STATUS_OVERLAY) != 0) { /* CHECK: && (vv->video_fh == fh)) */
+drivers/media/common/saa7146/saa7146_video.c:765:	DEB_EE("V4L2_BUF_TYPE_VIDEO_OVERLAY: dev:%p, fh:%p\n", dev, fh);
+drivers/media/common/saa7146/saa7146_video.c:782:	if (IS_OVERLAY_ACTIVE(fh) != 0) {
+drivers/media/common/saa7146/saa7146_video.c:830:	if ((vv->video_status & STATUS_OVERLAY) != 0) {
+drivers/media/common/saa7146/saa7146_video.c:867:	DEB_D("VIDIOC_OVERLAY on:%d\n", on);
+drivers/media/common/saa7146/saa7146_video.c:1217:	else if (IS_OVERLAY_ACTIVE(fh) != 0)
+drivers/media/pci/bt8xx/bttv-driver.c:627:   OVERLAY	 VIDIOCCAPTURE on            VIDIOCCAPTURE off
+drivers/media/pci/bt8xx/bttv-driver.c:628:		 VIDIOC_OVERLAY on           VIDIOC_OVERLAY off
+drivers/media/pci/bt8xx/bttv-driver.c:638:   3) VIDIOC_S_FBUF and VIDIOC_S_FMT (OVERLAY) still work when
+drivers/media/pci/bt8xx/bttv-driver.c:639:      RESOURCE_OVERLAY is allocated.
+drivers/media/pci/bt8xx/bttv-driver.c:649:			 RESOURCE_OVERLAY)
+drivers/media/pci/bt8xx/bttv-driver.c:1520:		free_btres_lock(btv,fh,RESOURCE_OVERLAY);
+drivers/media/pci/bt8xx/bttv-driver.c:2189:	if (check_btres(fh, RESOURCE_OVERLAY)) {
+drivers/media/pci/bt8xx/bttv-driver.c:2428:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/bt8xx/bttv-driver.c:2451:		cap->capabilities |= V4L2_CAP_VIDEO_OVERLAY;
+drivers/media/pci/bt8xx/bttv-driver.c:2506:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/bt8xx/bttv-driver.c:2555:	if (!check_alloc_btres_lock(btv, fh, RESOURCE_OVERLAY))
+drivers/media/pci/bt8xx/bttv-driver.c:2592:	if (fb->flags & V4L2_FBUF_FLAG_OVERLAY) {
+drivers/media/pci/bt8xx/bttv-driver.c:2618:	if (fb->flags & V4L2_FBUF_FLAG_OVERLAY) {
+drivers/media/pci/bt8xx/bttv-driver.c:2630:		if (check_btres(fh, RESOURCE_OVERLAY)) {
+drivers/media/pci/bt8xx/bttv-driver.c:2762:	    sel->type != V4L2_BUF_TYPE_VIDEO_OVERLAY)
+drivers/media/pci/bt8xx/bttv-driver.c:2800:	    sel->type != V4L2_BUF_TYPE_VIDEO_OVERLAY)
+drivers/media/pci/bt8xx/bttv-driver.c:3035:	if (check_btres(fh, RESOURCE_OVERLAY))
+drivers/media/pci/bt8xx/bttv-driver.c:3906:		btv->video_dev.device_caps |= V4L2_CAP_VIDEO_OVERLAY;
+drivers/media/pci/bt8xx/bttvp.h:53:#define RESOURCE_OVERLAY       1
+drivers/media/pci/cx88/cx88.h:300:#define RESOURCE_OVERLAY       1
+drivers/media/pci/ivtv/ivtv-ioctl.c:446:	if (!(s->vdev.device_caps & V4L2_CAP_VIDEO_OUTPUT_OVERLAY))
+drivers/media/pci/ivtv/ivtv-ioctl.c:557:	if (!(s->vdev.device_caps & V4L2_CAP_VIDEO_OUTPUT_OVERLAY))
+drivers/media/pci/ivtv/ivtv-ioctl.c:1391:	if (!(s->vdev.device_caps & V4L2_CAP_VIDEO_OUTPUT_OVERLAY))
+drivers/media/pci/ivtv/ivtv-ioctl.c:1396:	fb->capability = V4L2_FBUF_CAP_EXTERNOVERLAY | V4L2_FBUF_CAP_CHROMAKEY |
+drivers/media/pci/ivtv/ivtv-ioctl.c:1426:		fb->flags |= V4L2_FBUF_FLAG_OVERLAY;
+drivers/media/pci/ivtv/ivtv-ioctl.c:1458:	if (!(s->vdev.device_caps & V4L2_CAP_VIDEO_OUTPUT_OVERLAY))
+drivers/media/pci/ivtv/ivtv-ioctl.c:1468:	yi->track_osd = (fb->flags & V4L2_FBUF_FLAG_OVERLAY) != 0;
+drivers/media/pci/ivtv/ivtv-ioctl.c:1478:	if (!(s->vdev.device_caps & V4L2_CAP_VIDEO_OUTPUT_OVERLAY))
+drivers/media/pci/ivtv/ivtv-streams.c:304:		s->vdev.device_caps |= V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtv-streams.c:305:		itv->v4l2_cap |= V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1223:		V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1225:		V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1226:	itv->v4l2_cap |= V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1254:			~V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1256:			~V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ivtv/ivtvfb.c:1257:		itv->v4l2_cap &= ~V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/pci/ngene/ngene.h:879:#define RESOURCE_OVERLAY       1
+drivers/media/pci/saa7134/saa7134-core.c:1213:		dev->video_dev->device_caps |= V4L2_CAP_VIDEO_OVERLAY;
+drivers/media/pci/saa7134/saa7134-video.c:1274:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/saa7134/saa7134-video.c:1353:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/saa7134/saa7134-video.c:1387:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/saa7134/saa7134-video.c:1490:		cap->capabilities |= V4L2_CAP_VIDEO_OVERLAY;
+drivers/media/pci/saa7134/saa7134-video.c:1605:	    type != V4L2_BUF_TYPE_VIDEO_OVERLAY)
+drivers/media/pci/saa7134/saa7134-video.c:1624:	    sel->type != V4L2_BUF_TYPE_VIDEO_OVERLAY)
+drivers/media/pci/saa7134/saa7134-video.c:1650:	    sel->type != V4L2_BUF_TYPE_VIDEO_OVERLAY)
+drivers/media/pci/saa7134/saa7134-video.c:1777:		pr_err("V4L2_BUF_TYPE_VIDEO_OVERLAY: no_overlay\n");
+drivers/media/pci/saa7134/saa7134.h:431:#define RESOURCE_OVERLAY       1
+drivers/media/pci/ttpci/av7110_v4l.c:226:	if ((vv->video_status & STATUS_OVERLAY) != 0) {
+drivers/media/platform/fsl-viu.c:1379:			  V4L2_CAP_VIDEO_OVERLAY | V4L2_CAP_READWRITE,
+drivers/media/platform/omap/omap_vout.c:1242:	out->type = V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY;
+drivers/media/platform/omap/omap_vout.c:1336:	vout->fbuf.flags = V4L2_FBUF_FLAG_OVERLAY;
+drivers/media/platform/omap/omap_vout.c:1339:		V4L2_FBUF_CAP_EXTERNOVERLAY;
+drivers/media/platform/omap/omap_vout.c:1390:			   V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/test-drivers/vivid/vivid-core.c:1040:			V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_VIDEO_OVERLAY;
+drivers/media/test-drivers/vivid/vivid-core.c:1053:			dev->vid_out_caps |= V4L2_CAP_VIDEO_OUTPUT_OVERLAY;
+drivers/media/test-drivers/vivid/vivid-core.c:1191:		v4l2_disable_ioctl(&dev->vid_out_dev, VIDIOC_OVERLAY);
+drivers/media/test-drivers/vivid/vivid-vid-out.c:981:	a->capability = V4L2_FBUF_CAP_EXTERNOVERLAY |
+drivers/media/test-drivers/vivid/vivid-vid-out.c:989:	a->flags = V4L2_FBUF_FLAG_OVERLAY | dev->fbuf_out_flags;
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:268:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:269:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY: {
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:310:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:311:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:381:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:382:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:544:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:578:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:725:		case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:825:		case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:910:		case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:990:		case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:1418:#define VIDIOC_OVERLAY32	_IOW ('V', 14, s32)
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:1503:	case VIDIOC_OVERLAY32: ncmd = VIDIOC_OVERLAY; break;
+drivers/media/v4l2-core/v4l2-compat-ioctl32.c:1524:	case VIDIOC_OVERLAY32:
+drivers/media/v4l2-core/v4l2-dev.c:629:		SET_VALID_IOCTL(ops, VIDIOC_OVERLAY, vidioc_overlay);
+drivers/media/v4l2-core/v4l2-ioctl.c:192:	[V4L2_BUF_TYPE_VIDEO_OVERLAY]      = "vid-overlay",
+drivers/media/v4l2-core/v4l2-ioctl.c:198:	[V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY] = "vid-out-overlay",
+drivers/media/v4l2-core/v4l2-ioctl.c:211:	[V4L2_MEMORY_OVERLAY] = "overlay",
+drivers/media/v4l2-core/v4l2-ioctl.c:335:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:336:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1001:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1014:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1539:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1614:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1615:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY: {
+drivers/media/v4l2-core/v4l2-ioctl.c:1644:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1660:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1713:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1744:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1815:	case V4L2_BUF_TYPE_VIDEO_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:1846:	case V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY:
+drivers/media/v4l2-core/v4l2-ioctl.c:2817:	IOCTL_INFO(VIDIOC_OVERLAY, v4l_overlay, v4l_print_u32, INFO_FL_PRIO),
+drivers/media/v4l2-core/videobuf-core.c:337:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-core.c:412:		case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-core.c:448:	    req->memory != V4L2_MEMORY_OVERLAY) {
+drivers/media/v4l2-core/videobuf-core.c:595:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-dma-contig.c:263:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-dma-contig.c:265:		dev_dbg(q->dev, "%s memory method OVERLAY/unknown\n", __func__);
+drivers/media/v4l2-core/videobuf-dma-sg.c:548:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-vmalloc.c:197:	case V4L2_MEMORY_OVERLAY:
+drivers/media/v4l2-core/videobuf-vmalloc.c:199:		dprintk(1, "%s memory method OVERLAY/unknown\n", __func__);
+drivers/media/v4l2-core/videobuf-vmalloc.c:201:		/* Currently, doesn't support V4L2_MEMORY_OVERLAY */
+drivers/misc/mediatek/Kconfig:9:config MTK_DTBO_FEATURE
+drivers/misc/mediatek/Kconfig:12:	select BUILD_ARM_DTB_OVERLAY_IMAGE if !ARM64
+drivers/misc/mediatek/Kconfig:13:	select BUILD_ARM64_DTB_OVERLAY_IMAGE if ARM64
+drivers/misc/sgi-gru/grufile.c:520:	gru_start_paddr = uv_read_local_mmr(UVH_RH_GAM_GRU_OVERLAY_CONFIG) &
+drivers/net/ethernet/cisco/enic/enic_main.c:189:					   OVERLAY_CFG_VXLAN_PORT_UPDATE,
+drivers/net/ethernet/cisco/enic/enic_main.c:194:	err = vnic_dev_overlay_offload_ctrl(enic->vdev, OVERLAY_FEATURE_VXLAN,
+drivers/net/ethernet/cisco/enic/enic_main.c:215:	err = vnic_dev_overlay_offload_ctrl(enic->vdev, OVERLAY_FEATURE_VXLAN,
+drivers/net/ethernet/cisco/enic/enic_main.c:216:					    OVERLAY_OFFLOAD_DISABLE);
+drivers/net/ethernet/cisco/enic/vnic_dev.c:1258:	return vnic_dev_cmd(vdev, CMD_OVERLAY_OFFLOAD_CTRL, &a0, &a1, wait);
+drivers/net/ethernet/cisco/enic/vnic_dev.c:1268:	return vnic_dev_cmd(vdev, CMD_OVERLAY_OFFLOAD_CFG, &a0, &a1, wait);
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:437:	 * in: (u8) a0 = OVERLAY_FEATURE_NVGRE : NVGRE
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:438:	 *	    a0 = OVERLAY_FEATURE_VXLAN : VxLAN
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:439:	 * in: (u8) a1 = OVERLAY_OFFLOAD_ENABLE : Enable or
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:440:	 *	    a1 = OVERLAY_OFFLOAD_DISABLE : Disable or
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:441:	 *	    a1 = OVERLAY_OFFLOAD_ENABLE_V2 : Enable with version 2
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:443:	CMD_OVERLAY_OFFLOAD_CTRL = _CMDC(_CMD_DIR_WRITE, _CMD_VTYPE_ENET, 72),
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:446:	 * in: (u8) a0 = DEVCMD_OVERLAY_NVGRE : NVGRE
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:447:	 *	    a0 = DEVCMD_OVERLAY_VXLAN : VxLAN
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:451:	CMD_OVERLAY_OFFLOAD_CFG = _CMDC(_CMD_DIR_WRITE, _CMD_VTYPE_ENET, 73),
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:705:	OVERLAY_FEATURE_NVGRE = 1,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:706:	OVERLAY_FEATURE_VXLAN,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:707:	OVERLAY_FEATURE_MAX,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:711:	OVERLAY_OFFLOAD_ENABLE,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:712:	OVERLAY_OFFLOAD_DISABLE,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:713:	OVERLAY_OFFLOAD_ENABLE_P2,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:714:	OVERLAY_OFFLOAD_MAX,
+drivers/net/ethernet/cisco/enic/vnic_devcmd.h:717:#define OVERLAY_CFG_VXLAN_PORT_UPDATE	0
+drivers/net/ethernet/mellanox/mlxsw/spectrum_trap.c:673:		.trap = MLXSW_SP_TRAP_DROP(OVERLAY_SMAC_MC, TUNNEL_DROPS),
+drivers/net/ethernet/mellanox/mlxsw/spectrum_trap.c:675:			MLXSW_SP_RXL_DISCARD(OVERLAY_SMAC_MC, TUNNEL_DISCARDS),
+drivers/net/ethernet/mellanox/mlxsw/spectrum_trap.c:814:		.trap = MLXSW_SP_TRAP_CONTROL(ARP_OVERLAY, NEIGH_DISCOVERY,
+drivers/net/ethernet/mellanox/mlxsw/trap.h:100:	MLXSW_TRAP_ID_DISCARD_OVERLAY_SMAC_MC = 0x190,
+drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000/nfp_xpb.h:14:#define NFP_XPB_OVERLAY(island)  (((island) & 0x3f) << 24)
+drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000/nfp_xpb.h:16:#define NFP_XPB_ISLAND(island)   (NFP_XPB_OVERLAY(island) + 0x60000)
+drivers/net/ethernet/netronome/nfp/nfpcore/nfp6000/nfp_xpb.h:23:	(NFP_XPB_OVERLAY(island) | \
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:2781:	BIN_BUF_INIT_OVERLAYS,
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:2788:#define FW_OVERLAY_BUF_HDR_STORM_ID_MASK  0xFF
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:2789:#define FW_OVERLAY_BUF_HDR_STORM_ID_SHIFT 0
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:2790:#define FW_OVERLAY_BUF_HDR_BUF_SIZE_MASK  0xFFFFFF
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:2791:#define FW_OVERLAY_BUF_HDR_BUF_SIZE_SHIFT 8
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4135:#define XSTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[15].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4136:#define XSTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[15].size)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4139:#define YSTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[16].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4140:#define YSTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[16].size)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4143:#define PSTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[17].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4144:#define PSTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[17].size)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4147:#define TSTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[18].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4148:#define TSTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[18].size)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4151:#define MSTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[19].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4152:#define MSTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[19].size)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4155:#define USTORM_OVERLAY_BUF_ADDR_OFFSET			(IRO[20].base)
+drivers/net/ethernet/qlogic/qed/qed_hsi.h:4156:#define USTORM_OVERLAY_BUF_ADDR_SIZE			(IRO[20].size)
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1565:#define OVERLAY_HDR_SIZE_DWORDS (sizeof(struct fw_overlay_buf_hdr) / 4)
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1572:		    TSTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1575:		    MSTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1578:		    USTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1581:		    XSTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1584:		    YSTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1587:		    PSTORM_OVERLAY_BUF_ADDR_OFFSET;
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1622:					   FW_OVERLAY_BUF_HDR_BUF_SIZE);
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1623:		storm_id = GET_FIELD(hdr->data, FW_OVERLAY_BUF_HDR_STORM_ID);
+drivers/net/ethernet/qlogic/qed/qed_init_fw_funcs.c:1636:		buf_offset += OVERLAY_HDR_SIZE_DWORDS;
+drivers/net/ethernet/qlogic/qed/qed_init_ops.c:635:	offset = buf_hdr[BIN_BUF_INIT_OVERLAYS].offset;
+drivers/net/ethernet/qlogic/qed/qed_init_ops.c:637:	len = buf_hdr[BIN_BUF_INIT_OVERLAYS].length;
+drivers/net/ethernet/rocker/rocker_hw.h:385:	ROCKER_OF_DPA_GROUP_TYPE_L2_OVERLAY,
+drivers/net/ethernet/rocker/rocker_hw.h:390:	ROCKER_OF_DPA_OVERLAY_TYPE_FLOOD_UCAST = 0,
+drivers/net/ethernet/rocker/rocker_hw.h:391:	ROCKER_OF_DPA_OVERLAY_TYPE_FLOOD_MCAST,
+drivers/net/ethernet/rocker/rocker_hw.h:392:	ROCKER_OF_DPA_OVERLAY_TYPE_MCAST_UCAST,
+drivers/net/ethernet/rocker/rocker_hw.h:393:	ROCKER_OF_DPA_OVERLAY_TYPE_MCAST_MCAST,
+drivers/of/Kconfig:85:config OF_OVERLAY
+drivers/of/Makefile:14:obj-$(CONFIG_OF_OVERLAY) += overlay.o
+drivers/of/dynamic.c:210:	if (!of_node_check_flag(np, OF_OVERLAY)) {
+drivers/of/dynamic.c:340:	if (of_node_check_flag(node, OF_OVERLAY)) {
+drivers/of/dynamic.c:342:		if (!of_node_check_flag(node, OF_OVERLAY_FREE_CSET)) {
+drivers/of/dynamic.c:466:	    of_node_check_flag(ce->np, OF_OVERLAY)) {
+drivers/of/dynamic.c:471:			of_node_set_flag(ce->np, OF_OVERLAY_FREE_CSET);
+drivers/of/of_private.h:89:#if defined(CONFIG_OF_OVERLAY)
+drivers/of/of_private.h:97:#if defined(CONFIG_OF_UNITTEST) && defined(CONFIG_OF_OVERLAY)
+drivers/of/overlay.c:133: * tree node or its content beyond @OF_OVERLAY_POST_REMOVE corresponding to the
+drivers/of/overlay.c:362:	if (!of_node_check_flag(target->np, OF_OVERLAY))
+drivers/of/overlay.c:438:		of_node_set_flag(tchild, OF_OVERLAY);
+drivers/of/overlay.c:957:	ret = overlay_notify(ovcs, OF_OVERLAY_PRE_APPLY);
+drivers/of/overlay.c:986:	ret_tmp = overlay_notify(ovcs, OF_OVERLAY_POST_APPLY);
+drivers/of/overlay.c:1212:	ret = overlay_notify(ovcs, OF_OVERLAY_PRE_REMOVE);
+drivers/of/overlay.c:1235:	ret_tmp = overlay_notify(ovcs, OF_OVERLAY_POST_REMOVE);
+drivers/of/unittest-data/Makefile:4:obj-$(CONFIG_OF_OVERLAY) += overlay.dtb.o \
+drivers/of/unittest.c:1511:#ifdef CONFIG_OF_OVERLAY
+drivers/of/unittest.c:1860:	PDEV_OVERLAY,
+drivers/of/unittest.c:1861:	I2C_OVERLAY
+drivers/of/unittest.c:1868:	case PDEV_OVERLAY:
+drivers/of/unittest.c:1870:	case I2C_OVERLAY:
+drivers/of/unittest.c:1882:	case PDEV_OVERLAY:
+drivers/of/unittest.c:1885:	case I2C_OVERLAY:
+drivers/of/unittest.c:1904:	case PDEV_OVERLAY:
+drivers/of/unittest.c:1906:	case I2C_OVERLAY:
+drivers/of/unittest.c:1927:#define MAX_UNITTEST_OVERLAYS	256
+drivers/of/unittest.c:1928:static unsigned long overlay_id_bits[BITS_TO_LONGS(MAX_UNITTEST_OVERLAYS)];
+drivers/of/unittest.c:1933:	if (WARN_ON(id >= MAX_UNITTEST_OVERLAYS))
+drivers/of/unittest.c:1944:	if (WARN_ON(id >= MAX_UNITTEST_OVERLAYS))
+drivers/of/unittest.c:1954:	if (WARN_ON(id >= MAX_UNITTEST_OVERLAYS))
+drivers/of/unittest.c:1970:		for (id = MAX_UNITTEST_OVERLAYS - 1; id >= 0; id--) {
+drivers/of/unittest.c:2108:	ret = of_unittest_apply_overlay_check(0, 0, 0, 1, PDEV_OVERLAY);
+drivers/of/unittest.c:2128:	ret = of_unittest_apply_overlay_check(1, 1, 1, 0, PDEV_OVERLAY);
+drivers/of/unittest.c:2149:	ret = of_unittest_apply_overlay_check(2, 2, 0, 1, PDEV_OVERLAY);
+drivers/of/unittest.c:2168:	ret = of_unittest_apply_overlay_check(3, 3, 1, 0, PDEV_OVERLAY);
+drivers/of/unittest.c:2183:	if (of_unittest_apply_overlay_check(4, 4, 0, 1, PDEV_OVERLAY))
+drivers/of/unittest.c:2198:	ret = of_unittest_apply_revert_overlay_check(5, 5, 0, 1, PDEV_OVERLAY);
+drivers/of/unittest.c:2221:		if (of_unittest_device_exists(unittest_nr + i, PDEV_OVERLAY)
+drivers/of/unittest.c:2226:						PDEV_OVERLAY),
+drivers/of/unittest.c:2271:		if (of_unittest_device_exists(unittest_nr + i, PDEV_OVERLAY)
+drivers/of/unittest.c:2276:						PDEV_OVERLAY),
+drivers/of/unittest.c:2288:						PDEV_OVERLAY));
+drivers/of/unittest.c:2296:		if (of_unittest_device_exists(unittest_nr + i, PDEV_OVERLAY)
+drivers/of/unittest.c:2301:						PDEV_OVERLAY),
+drivers/of/unittest.c:2379:					PDEV_OVERLAY));
+drivers/of/unittest.c:2390:						PDEV_OVERLAY));
+drivers/of/unittest.c:2406:	ret = of_unittest_apply_overlay_check(10, 10, 0, 1, PDEV_OVERLAY);
+drivers/of/unittest.c:2413:			unittest_path(10, PDEV_OVERLAY));
+drivers/of/unittest.c:2417:	ret = of_path_device_type_exists(child_path, PDEV_OVERLAY);
+drivers/of/unittest.c:2430:			PDEV_OVERLAY);
+drivers/of/unittest.c:2435:#if IS_BUILTIN(CONFIG_I2C) && IS_ENABLED(CONFIG_OF_OVERLAY)
+drivers/of/unittest.c:2702:	ret = of_unittest_apply_overlay_check(12, 12, 0, 1, I2C_OVERLAY);
+drivers/of/unittest.c:2722:	ret = of_unittest_apply_overlay_check(13, 13, 1, 0, I2C_OVERLAY);
+drivers/of/unittest.c:2746:	ret = of_unittest_apply_overlay_check(15, 15, 0, 1, I2C_OVERLAY);
+drivers/of/unittest.c:2784:	if (!of_unittest_device_exists(100, PDEV_OVERLAY)) {
+drivers/of/unittest.c:2786:				unittest_path(100, PDEV_OVERLAY));
+drivers/of/unittest.c:2790:	if (of_unittest_device_exists(101, PDEV_OVERLAY)) {
+drivers/of/unittest.c:2792:				unittest_path(101, PDEV_OVERLAY));
+drivers/of/unittest.c:2835:#ifdef CONFIG_OF_OVERLAY
+drivers/of/unittest.c:2842:#define OVERLAY_INFO_EXTERN(name) \
+drivers/of/unittest.c:2846:#define OVERLAY_INFO(overlay_name, expected)             \
+drivers/of/unittest.c:2861:OVERLAY_INFO_EXTERN(overlay_base);
+drivers/of/unittest.c:2862:OVERLAY_INFO_EXTERN(overlay);
+drivers/of/unittest.c:2863:OVERLAY_INFO_EXTERN(overlay_0);
+drivers/of/unittest.c:2864:OVERLAY_INFO_EXTERN(overlay_1);
+drivers/of/unittest.c:2865:OVERLAY_INFO_EXTERN(overlay_2);
+drivers/of/unittest.c:2866:OVERLAY_INFO_EXTERN(overlay_3);
+drivers/of/unittest.c:2867:OVERLAY_INFO_EXTERN(overlay_4);
+drivers/of/unittest.c:2868:OVERLAY_INFO_EXTERN(overlay_5);
+drivers/of/unittest.c:2869:OVERLAY_INFO_EXTERN(overlay_6);
+drivers/of/unittest.c:2870:OVERLAY_INFO_EXTERN(overlay_7);
+drivers/of/unittest.c:2871:OVERLAY_INFO_EXTERN(overlay_8);
+drivers/of/unittest.c:2872:OVERLAY_INFO_EXTERN(overlay_9);
+drivers/of/unittest.c:2873:OVERLAY_INFO_EXTERN(overlay_10);
+drivers/of/unittest.c:2874:OVERLAY_INFO_EXTERN(overlay_11);
+drivers/of/unittest.c:2875:OVERLAY_INFO_EXTERN(overlay_12);
+drivers/of/unittest.c:2876:OVERLAY_INFO_EXTERN(overlay_13);
+drivers/of/unittest.c:2877:OVERLAY_INFO_EXTERN(overlay_15);
+drivers/of/unittest.c:2878:OVERLAY_INFO_EXTERN(overlay_gpio_01);
+drivers/of/unittest.c:2879:OVERLAY_INFO_EXTERN(overlay_gpio_02a);
+drivers/of/unittest.c:2880:OVERLAY_INFO_EXTERN(overlay_gpio_02b);
+drivers/of/unittest.c:2881:OVERLAY_INFO_EXTERN(overlay_gpio_03);
+drivers/of/unittest.c:2882:OVERLAY_INFO_EXTERN(overlay_gpio_04a);
+drivers/of/unittest.c:2883:OVERLAY_INFO_EXTERN(overlay_gpio_04b);
+drivers/of/unittest.c:2884:OVERLAY_INFO_EXTERN(overlay_bad_add_dup_node);
+drivers/of/unittest.c:2885:OVERLAY_INFO_EXTERN(overlay_bad_add_dup_prop);
+drivers/of/unittest.c:2886:OVERLAY_INFO_EXTERN(overlay_bad_phandle);
+drivers/of/unittest.c:2887:OVERLAY_INFO_EXTERN(overlay_bad_symbol);
+drivers/of/unittest.c:2891:	OVERLAY_INFO(overlay_base, -9999),
+drivers/of/unittest.c:2892:	OVERLAY_INFO(overlay, 0),
+drivers/of/unittest.c:2893:	OVERLAY_INFO(overlay_0, 0),
+drivers/of/unittest.c:2894:	OVERLAY_INFO(overlay_1, 0),
+drivers/of/unittest.c:2895:	OVERLAY_INFO(overlay_2, 0),
+drivers/of/unittest.c:2896:	OVERLAY_INFO(overlay_3, 0),
+drivers/of/unittest.c:2897:	OVERLAY_INFO(overlay_4, 0),
+drivers/of/unittest.c:2898:	OVERLAY_INFO(overlay_5, 0),
+drivers/of/unittest.c:2899:	OVERLAY_INFO(overlay_6, 0),
+drivers/of/unittest.c:2900:	OVERLAY_INFO(overlay_7, 0),
+drivers/of/unittest.c:2901:	OVERLAY_INFO(overlay_8, 0),
+drivers/of/unittest.c:2902:	OVERLAY_INFO(overlay_9, 0),
+drivers/of/unittest.c:2903:	OVERLAY_INFO(overlay_10, 0),
+drivers/of/unittest.c:2904:	OVERLAY_INFO(overlay_11, 0),
+drivers/of/unittest.c:2905:	OVERLAY_INFO(overlay_12, 0),
+drivers/of/unittest.c:2906:	OVERLAY_INFO(overlay_13, 0),
+drivers/of/unittest.c:2907:	OVERLAY_INFO(overlay_15, 0),
+drivers/of/unittest.c:2908:	OVERLAY_INFO(overlay_gpio_01, 0),
+drivers/of/unittest.c:2909:	OVERLAY_INFO(overlay_gpio_02a, 0),
+drivers/of/unittest.c:2910:	OVERLAY_INFO(overlay_gpio_02b, 0),
+drivers/of/unittest.c:2911:	OVERLAY_INFO(overlay_gpio_03, 0),
+drivers/of/unittest.c:2912:	OVERLAY_INFO(overlay_gpio_04a, 0),
+drivers/of/unittest.c:2913:	OVERLAY_INFO(overlay_gpio_04b, 0),
+drivers/of/unittest.c:2914:	OVERLAY_INFO(overlay_bad_add_dup_node, -EINVAL),
+drivers/of/unittest.c:2915:	OVERLAY_INFO(overlay_bad_add_dup_prop, -EINVAL),
+drivers/of/unittest.c:2916:	OVERLAY_INFO(overlay_bad_phandle, -EINVAL),
+drivers/of/unittest.c:2917:	OVERLAY_INFO(overlay_bad_symbol, -EINVAL),
+drivers/scsi/dpt/dptsig.h:152:#define FTF_OVERLAYS    0x04    /* Uses overlays */
+drivers/scsi/ibmvscsi/ibmvfc.h:332:#define IBMVFC_PRLI_DATA_OVERLAY			0x00000040
+drivers/scsi/ipr.c:2536:	    hostrcb->hcam.overlay_id == IPR_HOST_RCB_OVERLAY_ID_21) {
+drivers/scsi/ipr.c:2555:	case IPR_HOST_RCB_OVERLAY_ID_2:
+drivers/scsi/ipr.c:2558:	case IPR_HOST_RCB_OVERLAY_ID_3:
+drivers/scsi/ipr.c:2561:	case IPR_HOST_RCB_OVERLAY_ID_4:
+drivers/scsi/ipr.c:2562:	case IPR_HOST_RCB_OVERLAY_ID_6:
+drivers/scsi/ipr.c:2565:	case IPR_HOST_RCB_OVERLAY_ID_7:
+drivers/scsi/ipr.c:2568:	case IPR_HOST_RCB_OVERLAY_ID_12:
+drivers/scsi/ipr.c:2571:	case IPR_HOST_RCB_OVERLAY_ID_13:
+drivers/scsi/ipr.c:2574:	case IPR_HOST_RCB_OVERLAY_ID_14:
+drivers/scsi/ipr.c:2575:	case IPR_HOST_RCB_OVERLAY_ID_16:
+drivers/scsi/ipr.c:2578:	case IPR_HOST_RCB_OVERLAY_ID_17:
+drivers/scsi/ipr.c:2581:	case IPR_HOST_RCB_OVERLAY_ID_20:
+drivers/scsi/ipr.c:2584:	case IPR_HOST_RCB_OVERLAY_ID_21:
+drivers/scsi/ipr.c:2587:	case IPR_HOST_RCB_OVERLAY_ID_23:
+drivers/scsi/ipr.c:2590:	case IPR_HOST_RCB_OVERLAY_ID_24:
+drivers/scsi/ipr.c:2591:	case IPR_HOST_RCB_OVERLAY_ID_26:
+drivers/scsi/ipr.c:2594:	case IPR_HOST_RCB_OVERLAY_ID_30:
+drivers/scsi/ipr.c:2597:	case IPR_HOST_RCB_OVERLAY_ID_41:
+drivers/scsi/ipr.c:2600:	case IPR_HOST_RCB_OVERLAY_ID_1:
+drivers/scsi/ipr.c:2601:	case IPR_HOST_RCB_OVERLAY_ID_DEFAULT:
+drivers/scsi/ipr.h:1197:#define IPR_HOST_RCB_OVERLAY_ID_1				0x01
+drivers/scsi/ipr.h:1198:#define IPR_HOST_RCB_OVERLAY_ID_2				0x02
+drivers/scsi/ipr.h:1199:#define IPR_HOST_RCB_OVERLAY_ID_3				0x03
+drivers/scsi/ipr.h:1200:#define IPR_HOST_RCB_OVERLAY_ID_4				0x04
+drivers/scsi/ipr.h:1201:#define IPR_HOST_RCB_OVERLAY_ID_6				0x06
+drivers/scsi/ipr.h:1202:#define IPR_HOST_RCB_OVERLAY_ID_7				0x07
+drivers/scsi/ipr.h:1203:#define IPR_HOST_RCB_OVERLAY_ID_12				0x12
+drivers/scsi/ipr.h:1204:#define IPR_HOST_RCB_OVERLAY_ID_13				0x13
+drivers/scsi/ipr.h:1205:#define IPR_HOST_RCB_OVERLAY_ID_14				0x14
+drivers/scsi/ipr.h:1206:#define IPR_HOST_RCB_OVERLAY_ID_16				0x16
+drivers/scsi/ipr.h:1207:#define IPR_HOST_RCB_OVERLAY_ID_17				0x17
+drivers/scsi/ipr.h:1208:#define IPR_HOST_RCB_OVERLAY_ID_20				0x20
+drivers/scsi/ipr.h:1209:#define IPR_HOST_RCB_OVERLAY_ID_21				0x21
+drivers/scsi/ipr.h:1210:#define IPR_HOST_RCB_OVERLAY_ID_23				0x23
+drivers/scsi/ipr.h:1211:#define IPR_HOST_RCB_OVERLAY_ID_24				0x24
+drivers/scsi/ipr.h:1212:#define IPR_HOST_RCB_OVERLAY_ID_26				0x26
+drivers/scsi/ipr.h:1213:#define IPR_HOST_RCB_OVERLAY_ID_30				0x30
+drivers/scsi/ipr.h:1214:#define IPR_HOST_RCB_OVERLAY_ID_41				0x41
+drivers/scsi/ipr.h:1215:#define IPR_HOST_RCB_OVERLAY_ID_DEFAULT				0xFF
+drivers/scsi/pmcraid.h:447:#define HOSTRCB_OVERLAY_ID_08			0x08
+drivers/scsi/pmcraid.h:448:#define HOSTRCB_OVERLAY_ID_09			0x09
+drivers/scsi/pmcraid.h:449:#define HOSTRCB_OVERLAY_ID_11			0x11
+drivers/scsi/pmcraid.h:450:#define HOSTRCB_OVERLAY_ID_12			0x12
+drivers/scsi/pmcraid.h:451:#define HOSTRCB_OVERLAY_ID_13			0x13
+drivers/scsi/pmcraid.h:452:#define HOSTRCB_OVERLAY_ID_14			0x14
+drivers/scsi/pmcraid.h:453:#define HOSTRCB_OVERLAY_ID_16			0x16
+drivers/scsi/pmcraid.h:454:#define HOSTRCB_OVERLAY_ID_17			0x17
+drivers/scsi/pmcraid.h:455:#define HOSTRCB_OVERLAY_ID_20			0x20
+drivers/scsi/pmcraid.h:456:#define HOSTRCB_OVERLAY_ID_FF			0xFF
+drivers/staging/media/atomisp/include/linux/atomisp.h:1068:#define ATOMISP_IOC_G_ISP_OVERLAY \
+drivers/staging/media/atomisp/include/linux/atomisp.h:1070:#define ATOMISP_IOC_S_ISP_OVERLAY \
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:911:	case ATOMISP_IOC_G_ISP_OVERLAY32:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:912:		cmd = ATOMISP_IOC_G_ISP_OVERLAY;
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:914:	case ATOMISP_IOC_S_ISP_OVERLAY32:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:915:		cmd = ATOMISP_IOC_S_ISP_OVERLAY;
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:988:	case ATOMISP_IOC_G_ISP_OVERLAY:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:989:	case ATOMISP_IOC_S_ISP_OVERLAY:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:1054:	case ATOMISP_IOC_G_ISP_OVERLAY:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:1173:	case ATOMISP_IOC_G_ISP_OVERLAY32:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.c:1174:	case ATOMISP_IOC_S_ISP_OVERLAY32:
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.h:318:#define ATOMISP_IOC_G_ISP_OVERLAY32 \
+drivers/staging/media/atomisp/pci/atomisp_compat_ioctl32.h:320:#define ATOMISP_IOC_S_ISP_OVERLAY32 \
+drivers/staging/media/zoran/zoran.h:142:#define ZORAN_FORMAT_OVERLAY BIT(1)
+drivers/staging/media/zoran/zoran_driver.c:640:	outp->type = V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY;
+drivers/staging/pi433/Documentation/devicetree/pi433.txt:55:'linux/scripts/dtc/dtc -@ -I dts -O dtb -o pi433.dtbo pi433-overlay.dts'
+drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c:836:	a->capability = V4L2_FBUF_CAP_EXTERNOVERLAY |
+drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c:838:	a->flags = V4L2_FBUF_FLAG_OVERLAY;
+drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c:1488:	.device_caps = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_VIDEO_OVERLAY |
+drivers/usb/host/ehci-q.c:543:		qh->unlink_reason |= QH_UNLINK_DUMMY_OVERLAY;
+drivers/usb/host/ehci-q.c:1359:			QH_UNLINK_SHORT_READ | QH_UNLINK_DUMMY_OVERLAY))
+drivers/usb/host/ehci.h:437:#define QH_UNLINK_DUMMY_OVERLAY	0x04		/* QH overlayed the dummy TD */
+drivers/video/fbdev/Kconfig:1764:config FB_PXA_OVERLAY
+drivers/video/fbdev/carminefb_regs.h:5:#define CARMINE_OVERLAY_EXT_MODE	(0x00000002)
+drivers/video/fbdev/carminefb_regs.h:14:					CARMINE_OVERLAY_EXT_MODE)
+drivers/video/fbdev/i740_reg.h:148:#define OVERLAY_GAMMA_ENABLE	0x04
+drivers/video/fbdev/i740_reg.h:149:#define OVERLAY_GAMMA_DISABLE	0x00
+drivers/video/fbdev/i740_reg.h:208:#define BLANK_DISP_OVERLAY	0x20
+drivers/video/fbdev/i740fb.c:624:	par->pixelpipe_cfg2 = DISPLAY_GAMMA_ENABLE | OVERLAY_GAMMA_ENABLE;
+drivers/video/fbdev/i740fb.c:839:	i740outreg_mask(par, MRX, COL_KEY_CNTL_1, 0, BLANK_DISP_OVERLAY);
+drivers/video/fbdev/i810/i810.h:75:#define OVERLAY_FLIP          (0x11 << 23)
+drivers/video/fbdev/intelfb/intelfbhw.h:417:#define DISPPLANE_SPRITE_ABOVE_OVERLAY	1
+drivers/video/fbdev/kyro/STG4000Reg.h:54:	NO_LUT = 0, RESERVED, GRAPHICS, OVERLAY
+drivers/video/fbdev/kyro/fbdev.c:595:	case KYRO_IOCTL_OVERLAY_CREATE:
+drivers/video/fbdev/kyro/fbdev.c:606:	case KYRO_IOCTL_OVERLAY_VIEWPORT_SET:
+drivers/video/fbdev/kyro/fbdev.c:635:	case KYRO_IOCTL_OVERLAY_OFFSET:
+drivers/video/fbdev/omap/omapfb_main.c:55:	{ OMAPFB_CAPS_WINDOW_OVERLAY, "overlay window" },
+drivers/video/fbdev/omap2/omapfb/dss/apply.c:104:	struct ovl_priv_data ovl_priv_data_array[MAX_DSS_OVERLAYS];
+drivers/video/fbdev/omap2/omapfb/dss/apply.c:203:	struct omap_overlay_info *ois[MAX_DSS_OVERLAYS];
+drivers/video/fbdev/omap2/omapfb/dss/dss_features.h:13:#define MAX_DSS_OVERLAYS	4
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:10:#define DSS_SUBSYS_NAME "OVERLAY"
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:357:#define OVERLAY_ATTR(_name, _mode, _show, _store) \
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:361:static OVERLAY_ATTR(name, S_IRUGO, overlay_name_show, NULL);
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:362:static OVERLAY_ATTR(manager, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:364:static OVERLAY_ATTR(input_size, S_IRUGO, overlay_input_size_show, NULL);
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:365:static OVERLAY_ATTR(screen_width, S_IRUGO, overlay_screen_width_show, NULL);
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:366:static OVERLAY_ATTR(position, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:368:static OVERLAY_ATTR(output_size, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:370:static OVERLAY_ATTR(enabled, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:372:static OVERLAY_ATTR(global_alpha, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:374:static OVERLAY_ATTR(pre_mult_alpha, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay-sysfs.c:377:static OVERLAY_ATTR(zorder, S_IRUGO|S_IWUSR,
+drivers/video/fbdev/omap2/omapfb/dss/overlay.c:12:#define DSS_SUBSYS_NAME "OVERLAY"
+drivers/video/fbdev/omap2/omapfb/omapfb-ioctl.c:702:	case OMAPFB_GET_OVERLAY_COLORMODE:
+drivers/video/fbdev/omap2/omapfb/omapfb-ioctl.c:703:		DBG("ioctl GET_OVERLAY_COLORMODE\n");
+drivers/video/fbdev/pm2fb.c:388:		pm2_RDAC_WR(p, PM2I_RD_OVERLAY_KEY, 0);
+drivers/video/fbdev/pm2fb.c:847:		pm2v_RDAC_WR(par, PM2VI_RD_OVERLAY_KEY, 0);
+drivers/video/fbdev/pxafb.c:612:#ifdef CONFIG_FB_PXA_OVERLAY
+drivers/video/fbdev/pxafb.c:659:	if (pfor == OVERLAY_FORMAT_RGB || pfor == OVERLAY_FORMAT_YUV444_PACKED) {
+drivers/video/fbdev/pxafb.c:665:		case OVERLAY_FORMAT_YUV444_PLANAR: div = 1; break;
+drivers/video/fbdev/pxafb.c:666:		case OVERLAY_FORMAT_YUV422_PLANAR: div = 2; break;
+drivers/video/fbdev/pxafb.c:667:		case OVERLAY_FORMAT_YUV420_PLANAR: div = 4; break;
+drivers/video/fbdev/pxafb.c:685:	if (pfor == OVERLAY_FORMAT_RGB || pfor == OVERLAY_FORMAT_YUV444_PACKED)
+drivers/video/fbdev/pxafb.c:780:	if (ofb->id == OVERLAY1 && pfor != 0)
+drivers/video/fbdev/pxafb.c:785:	case OVERLAY_FORMAT_RGB:
+drivers/video/fbdev/pxafb.c:792:	case OVERLAY_FORMAT_YUV444_PACKED: bpp = 24; break;
+drivers/video/fbdev/pxafb.c:793:	case OVERLAY_FORMAT_YUV444_PLANAR: bpp = 8; break;
+drivers/video/fbdev/pxafb.c:794:	case OVERLAY_FORMAT_YUV422_PLANAR: bpp = 4; break;
+drivers/video/fbdev/pxafb.c:795:	case OVERLAY_FORMAT_YUV420_PLANAR: bpp = 2; break;
+drivers/video/fbdev/pxafb.c:823:	case OVERLAY_FORMAT_RGB: bpp = var->bits_per_pixel; break;
+drivers/video/fbdev/pxafb.c:824:	case OVERLAY_FORMAT_YUV444_PACKED: bpp = 24; break;
+drivers/video/fbdev/pxafb.c:825:	case OVERLAY_FORMAT_YUV444_PLANAR: bpp = 24; break;
+drivers/video/fbdev/pxafb.c:826:	case OVERLAY_FORMAT_YUV422_PLANAR: bpp = 16; break;
+drivers/video/fbdev/pxafb.c:827:	case OVERLAY_FORMAT_YUV420_PLANAR: bpp = 12; break;
+drivers/video/fbdev/pxafb.c:860:	if (ofb->id == OVERLAY2)
+drivers/video/fbdev/pxafb.c:986:#endif /* CONFIG_FB_PXA_OVERLAY */
+drivers/video/fbdev/pxafb.c:1522:#ifdef CONFIG_FB_PXA_OVERLAY
+drivers/video/fbdev/pxafb.c:1665:#ifdef CONFIG_FB_PXA_OVERLAY
+drivers/video/fbdev/pxafb.c:1841:#ifdef CONFIG_FB_PXA_OVERLAY
+drivers/video/fbdev/pxafb.h:68:	OVERLAY1,
+drivers/video/fbdev/pxafb.h:69:	OVERLAY2,
+drivers/video/fbdev/pxafb.h:73:	OVERLAY_FORMAT_RGB = 0,
+drivers/video/fbdev/pxafb.h:74:	OVERLAY_FORMAT_YUV444_PACKED,
+drivers/video/fbdev/pxafb.h:75:	OVERLAY_FORMAT_YUV444_PLANAR,
+drivers/video/fbdev/pxafb.h:76:	OVERLAY_FORMAT_YUV422_PLANAR,
+drivers/video/fbdev/pxafb.h:77:	OVERLAY_FORMAT_YUV420_PLANAR,
+drivers/video/fbdev/pxafb.h:159:#ifdef CONFIG_FB_PXA_OVERLAY
+drivers/video/fbdev/sh_mobile_lcdcfb.c:143:	LCDC_OVERLAY_BLEND,
+drivers/video/fbdev/sh_mobile_lcdcfb.c:144:	LCDC_OVERLAY_ROP3,
+drivers/video/fbdev/sh_mobile_lcdcfb.c:797:	case LCDC_OVERLAY_BLEND:
+drivers/video/fbdev/sh_mobile_lcdcfb.c:801:	case LCDC_OVERLAY_ROP3:
+drivers/video/fbdev/sh_mobile_lcdcfb.c:1223:		if (ovl->mode == LCDC_OVERLAY_BLEND && ovl->enabled)
+drivers/video/fbdev/sh_mobile_lcdcfb.c:1255:	if (mode != LCDC_OVERLAY_BLEND && mode != LCDC_OVERLAY_ROP3)
+drivers/video/fbdev/sh_mobile_lcdcfb.c:1341:		if (ovl->mode == LCDC_OVERLAY_ROP3 && ovl->enabled)
+drivers/video/fbdev/sh_mobile_lcdcfb.c:2370:	ovl->mode = LCDC_OVERLAY_BLEND;
+drivers/video/fbdev/stifb.c:225:		case CRX24_OVERLAY_PLANES:
+drivers/video/fbdev/stifb.c:525:	fb->id = CRX24_OVERLAY_PLANES;
+drivers/video/fbdev/stifb.c:540:#define NGLE_CMAP_OVERLAY_TYPE			3
+drivers/video/fbdev/stifb.c:572:			lutBltCtl.fields.lutType = NGLE_CMAP_OVERLAY_TYPE;
+drivers/video/fbdev/stifb.c:1026:	case CRX24_OVERLAY_PLANES:
+fs/Makefile:117:obj-$(CONFIG_OVERLAY_FS)	+= overlayfs/
+fs/overlayfs/Kconfig:2:config OVERLAY_FS
+fs/overlayfs/Kconfig:14:config OVERLAY_FS_REDIRECT_DIR
+fs/overlayfs/Kconfig:16:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:30:config OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW
+fs/overlayfs/Kconfig:33:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:45:config OVERLAY_FS_INDEX
+fs/overlayfs/Kconfig:47:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:64:config OVERLAY_FS_NFS_EXPORT
+fs/overlayfs/Kconfig:66:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:67:	depends on OVERLAY_FS_INDEX
+fs/overlayfs/Kconfig:68:	depends on !OVERLAY_FS_METACOPY
+fs/overlayfs/Kconfig:92:config OVERLAY_FS_XINO_AUTO
+fs/overlayfs/Kconfig:95:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:110:config OVERLAY_FS_METACOPY
+fs/overlayfs/Kconfig:112:	depends on OVERLAY_FS
+fs/overlayfs/Kconfig:113:	select OVERLAY_FS_REDIRECT_DIR
+fs/overlayfs/Makefile:6:obj-$(CONFIG_OVERLAY_FS) += overlay.o
+fs/overlayfs/super.c:30:static bool ovl_redirect_dir_def = IS_ENABLED(CONFIG_OVERLAY_FS_REDIRECT_DIR);
+fs/overlayfs/super.c:36:	IS_ENABLED(CONFIG_OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW);
+fs/overlayfs/super.c:42:static bool ovl_index_def = IS_ENABLED(CONFIG_OVERLAY_FS_INDEX);
+fs/overlayfs/super.c:47:static bool ovl_nfs_export_def = IS_ENABLED(CONFIG_OVERLAY_FS_NFS_EXPORT);
+fs/overlayfs/super.c:52:static bool ovl_xino_auto_def = IS_ENABLED(CONFIG_OVERLAY_FS_XINO_AUTO);
+fs/overlayfs/super.c:70:static bool ovl_metacopy_def = IS_ENABLED(CONFIG_OVERLAY_FS_METACOPY);
+fs/overlayfs/super.c:332:		buf->f_type = OVERLAYFS_SUPER_MAGIC;
+fs/overlayfs/super.c:2051:	sb->s_magic = OVERLAYFS_SUPER_MAGIC;
+include/drm/drm_mode_config.h:581:	 * CURSOR, PRIMARY and OVERLAY legacy uses of planes.
+include/drm/drm_plane.h:538:	 * @DRM_PLANE_TYPE_OVERLAY:
+include/drm/drm_plane.h:543:	DRM_PLANE_TYPE_OVERLAY,
+include/drm/drm_plane.h:818:		for_each_if (plane->type == DRM_PLANE_TYPE_OVERLAY)
+include/linux/ata.h:272:	ATA_CMD_CONF_OVERLAY	= 0xB1,
+include/linux/ata.h:438:	/* feature values for DEVICE CONFIGURATION OVERLAY */
+include/linux/ceph/rados.h:402:	CEPH_OSD_FLAG_IGNORE_OVERLAY = 0x20000, /* ignore pool overlay */
+include/linux/ceph/rados.h:447:	CEPH_OSD_COPY_FROM_FLAG_IGNORE_OVERLAY = 2, /* ignore pool overlay */
+include/linux/of.h:147:#define OF_OVERLAY		5 /* allocated for an overlay */
+include/linux/of.h:148:#define OF_OVERLAY_FREE_CSET	6 /* in overlay cset being freed */
+include/linux/of.h:1468:	OF_OVERLAY_PRE_APPLY = 0,
+include/linux/of.h:1469:	OF_OVERLAY_POST_APPLY,
+include/linux/of.h:1470:	OF_OVERLAY_PRE_REMOVE,
+include/linux/of.h:1471:	OF_OVERLAY_POST_REMOVE,
+include/linux/of.h:1479:#ifdef CONFIG_OF_OVERLAY
+include/media/drv-intf/saa7146_vv.h:101:#define STATUS_OVERLAY	0x01
+include/media/v4l2-ioctl.h:167: *	:ref:`VIDIOC_OVERLAY <vidioc_overlay>` ioctl
+include/net/devlink.h:773:	DEVLINK_TRAP_GENERIC_ID_OVERLAY_SMAC_MC,
+include/net/devlink.h:792:	DEVLINK_TRAP_GENERIC_ID_ARP_OVERLAY,
+include/net/devlink.h:932:#define DEVLINK_TRAP_GENERIC_NAME_OVERLAY_SMAC_MC \
+include/net/devlink.h:970:#define DEVLINK_TRAP_GENERIC_NAME_ARP_OVERLAY \
+include/trace/events/libata.h:82:		 ata_opcode_name(ATA_CMD_CONF_OVERLAY),		\
+include/trace/events/v4l2.h:23:	EM( V4L2_BUF_TYPE_VIDEO_OVERLAY,	"VIDEO_OVERLAY" )	\
+include/trace/events/v4l2.h:28:	EM( V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY, "VIDEO_OUTPUT_OVERLAY" ) \
+include/uapi/drm/i915_drm.h:340:#define DRM_I915_OVERLAY_PUT_IMAGE	0x27
+include/uapi/drm/i915_drm.h:341:#define DRM_I915_OVERLAY_ATTRS	0x28
+include/uapi/drm/i915_drm.h:406:#define DRM_IOCTL_I915_OVERLAY_PUT_IMAGE	DRM_IOW(DRM_COMMAND_BASE + DRM_I915_OVERLAY_PUT_IMAGE, struct drm_intel_overlay_put_image)
+include/uapi/drm/i915_drm.h:407:#define DRM_IOCTL_I915_OVERLAY_ATTRS	DRM_IOWR(DRM_COMMAND_BASE + DRM_I915_OVERLAY_ATTRS, struct drm_intel_overlay_attrs)
+include/uapi/drm/i915_drm.h:476:#define I915_PARAM_HAS_OVERLAY           7
+include/uapi/drm/i915_drm.h:1464:#define I915_OVERLAY_TYPE_MASK 		0xff
+include/uapi/drm/i915_drm.h:1465:#define I915_OVERLAY_YUV_PLANAR 	0x01
+include/uapi/drm/i915_drm.h:1466:#define I915_OVERLAY_YUV_PACKED 	0x02
+include/uapi/drm/i915_drm.h:1467:#define I915_OVERLAY_RGB		0x03
+include/uapi/drm/i915_drm.h:1469:#define I915_OVERLAY_DEPTH_MASK		0xff00
+include/uapi/drm/i915_drm.h:1470:#define I915_OVERLAY_RGB24		0x1000
+include/uapi/drm/i915_drm.h:1471:#define I915_OVERLAY_RGB16		0x2000
+include/uapi/drm/i915_drm.h:1472:#define I915_OVERLAY_RGB15		0x3000
+include/uapi/drm/i915_drm.h:1473:#define I915_OVERLAY_YUV422		0x0100
+include/uapi/drm/i915_drm.h:1474:#define I915_OVERLAY_YUV411		0x0200
+include/uapi/drm/i915_drm.h:1475:#define I915_OVERLAY_YUV420		0x0300
+include/uapi/drm/i915_drm.h:1476:#define I915_OVERLAY_YUV410		0x0400
+include/uapi/drm/i915_drm.h:1478:#define I915_OVERLAY_SWAP_MASK		0xff0000
+include/uapi/drm/i915_drm.h:1479:#define I915_OVERLAY_NO_SWAP		0x000000
+include/uapi/drm/i915_drm.h:1480:#define I915_OVERLAY_UV_SWAP		0x010000
+include/uapi/drm/i915_drm.h:1481:#define I915_OVERLAY_Y_SWAP		0x020000
+include/uapi/drm/i915_drm.h:1482:#define I915_OVERLAY_Y_AND_UV_SWAP	0x030000
+include/uapi/drm/i915_drm.h:1484:#define I915_OVERLAY_FLAGS_MASK		0xff000000
+include/uapi/drm/i915_drm.h:1485:#define I915_OVERLAY_ENABLE		0x01000000
+include/uapi/drm/i915_drm.h:1513:#define I915_OVERLAY_UPDATE_ATTRS	(1<<0)
+include/uapi/drm/i915_drm.h:1514:#define I915_OVERLAY_UPDATE_GAMMA	(1<<1)
+include/uapi/drm/i915_drm.h:1515:#define I915_OVERLAY_DISABLE_DEST_COLORKEY	(1<<2)
+include/uapi/drm/vmwgfx_drm.h:84: * DRM_VMW_PARAM_OVERLAY_IOCTL:
+include/uapi/linux/magic.h:37:#define OVERLAYFS_SUPER_MAGIC	0x794c7630
+include/uapi/linux/omapfb.h:57:#define OMAPFB_GET_OVERLAY_COLORMODE OMAP_IOR(59, struct omapfb_ovl_colormode)
+include/uapi/linux/omapfb.h:73:#define OMAPFB_CAPS_WINDOW_OVERLAY	0x00040000
+include/uapi/linux/omapfb.h:82:#define OMAPFB_FORMAT_FLAG_ENABLE_OVERLAY	0x0800
+include/uapi/linux/omapfb.h:83:#define OMAPFB_FORMAT_FLAG_DISABLE_OVERLAY	0x1000
+include/uapi/linux/videodev2.h:144:	V4L2_BUF_TYPE_VIDEO_OVERLAY        = 3,
+include/uapi/linux/videodev2.h:149:	V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY = 8,
+include/uapi/linux/videodev2.h:167:	 || (type) == V4L2_BUF_TYPE_VIDEO_OVERLAY		\
+include/uapi/linux/videodev2.h:168:	 || (type) == V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY	\
+include/uapi/linux/videodev2.h:190:	V4L2_MEMORY_OVERLAY          = 3,
+include/uapi/linux/videodev2.h:455:#define V4L2_CAP_VIDEO_OVERLAY		0x00000004  /* Can do video overlay */
+include/uapi/linux/videodev2.h:461:#define V4L2_CAP_VIDEO_OUTPUT_OVERLAY	0x00000200  /* Can do video output overlay */
+include/uapi/linux/videodev2.h:1165:#define V4L2_FBUF_CAP_EXTERNOVERLAY	0x0001
+include/uapi/linux/videodev2.h:1175:#define V4L2_FBUF_FLAG_OVERLAY		0x0002
+include/uapi/linux/videodev2.h:1710:#define V4L2_OUTPUT_TYPE_ANALOGVGAOVERLAY	3
+include/uapi/linux/videodev2.h:2307:		struct v4l2_window		win;     /* V4L2_BUF_TYPE_VIDEO_OVERLAY */
+include/uapi/linux/videodev2.h:2496:#define VIDIOC_OVERLAY		 _IOW('V', 14, int)
+include/video/kyro.h:59:#define KYRO_IOCTL_OVERLAY_CREATE       _IO(KYRO_IOC_MAGIC, 0)
+include/video/kyro.h:60:#define KYRO_IOCTL_OVERLAY_VIEWPORT_SET _IO(KYRO_IOC_MAGIC, 1)
+include/video/kyro.h:63:#define KYRO_IOCTL_OVERLAY_OFFSET       _IO(KYRO_IOC_MAGIC, 4)
+include/video/kyro.h:70:typedef struct _OVERLAY_CREATE {
+include/video/kyro.h:76:typedef struct _OVERLAY_VIEWPORT_SET {
+include/video/mach64.h:432:#define OVERLAY_Y_X_START		0x0400	/* Dword offset 1_00 */
+include/video/mach64.h:433:#define OVERLAY_Y_X_END			0x0404	/* Dword offset 1_01 */
+include/video/mach64.h:434:#define OVERLAY_VIDEO_KEY_CLR		0x0408	/* Dword offset 1_02 */
+include/video/mach64.h:435:#define OVERLAY_VIDEO_KEY_MSK		0x040C	/* Dword offset 1_03 */
+include/video/mach64.h:436:#define OVERLAY_GRAPHICS_KEY_CLR	0x0410	/* Dword offset 1_04 */
+include/video/mach64.h:437:#define OVERLAY_GRAPHICS_KEY_MSK	0x0414	/* Dword offset 1_05 */
+include/video/mach64.h:438:#define OVERLAY_KEY_CNTL		0x0418	/* Dword offset 1_06 */
+include/video/mach64.h:440:#define OVERLAY_SCALE_INC	0x0420	/* Dword offset 1_08 */
+include/video/mach64.h:441:#define OVERLAY_SCALE_CNTL	0x0424	/* Dword offset 1_09 */
+include/video/mach64.h:455:#define OVERLAY_EXCLUSIVE_HORZ	0x0458	/* Dword offset 1_16 */
+include/video/mach64.h:456:#define OVERLAY_EXCLUSIVE_VERT	0x045C	/* Dword offset 1_17 */
+include/video/mach64.h:660:#define OVERLAY_EOF_INT_EN	0x00100000
+include/video/mach64.h:661:#define OVERLAY_EOF_INT		0x00200000
+include/video/mach64.h:662:#define OVERLAY_EOF_INT_AK	OVERLAY_EOF_INT
+include/video/mach64.h:687:				 OVERLAY_EOF_INT_EN |	\
+include/video/permedia2.h:145:#define PM2I_RD_OVERLAY_KEY				0x41
+include/video/permedia2.h:163:#define PM2VI_RD_OVERLAY_KEY				0x00D
+include/video/pm3fb.h:268:	#define PM3RD_MiscControl_OVERLAY_ENABLE		(1 << 4)
+include/video/pm3fb.h:364:	#define PM3RD_VideoOverlayControl_MODE_OVERLAYKEY	(1 << 1)
+kernel/configs/ot11.config:146:CONFIG_MTK_DTBO_FEATURE=y
+kernel/configs/ot11.config:148:CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES="mediatek/mt8781_gta9_eur_open_00"
+net/ceph/osd_client.c:1563:	if ((t->flags & CEPH_OSD_FLAG_IGNORE_OVERLAY) == 0) {
+net/ceph/osd_client.c:3742:				CEPH_OSD_FLAG_IGNORE_OVERLAY |
+net/core/devlink.c:9448:	DEVLINK_TRAP(OVERLAY_SMAC_MC, DROP),
+net/core/devlink.c:9467:	DEVLINK_TRAP(ARP_OVERLAY, CONTROL),
+scripts/drvgen/drvgen.mk:3:PROJ_DT_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES))
+scripts/drvgen/drvgen.mk:5:PROJ_DT_NAMES := $(subst $\",,$(CONFIG_BUILD_ARM_DTB_OVERLAY_IMAGE_NAMES))
+scripts/drvgen/drvgen.mk:8:PROJ_DTB_NAMES := $(addsuffix .dtbo,$(PROJ_DT_NAMES))
+scripts/drvgen/drvgen.mk:9:ABS_DTB_FILES := $(abspath $(addsuffix .dtbo,$(addprefix $(objtree)/arch/$(SRCARCH)/boot/dts/,$(PROJ_DT_NAMES))))
+scripts/drvgen/drvgen.mk:11:my_dtbo_id := 0
+scripts/drvgen/drvgen.mk:12:define mk_dtboimg_cfg
+scripts/drvgen/drvgen.mk:14:echo " id=$(my_dtbo_id)" >>$(2);\
+scripts/drvgen/drvgen.mk:15:$(eval my_dtbo_id:=$(shell echo $$(($(my_dtbo_id)+1))))
+scripts/drvgen/drvgen.mk:18:dtbs: $(objtree)/dtboimg.cfg
+scripts/drvgen/drvgen.mk:20:$(objtree)/dtboimg.cfg: FORCE
+scripts/drvgen/drvgen.mk:22:	$(foreach f,$(ABS_DTB_FILES),$(call mk_dtboimg_cfg,$(f),$@.tmp))
+scripts/drvgen/drvgen.mk:29:dtbo:
+scripts/dtc/libfdt/fdt_overlay.c:89:		ret = -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:243:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:249:				return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:278:				return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:293:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:398:		return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:454:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:463:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:467:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:473:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:477:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:481:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:773:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_overlay.c:779:			return -FDT_ERR_BADOVERLAY;
+scripts/dtc/libfdt/fdt_strerror.c:39:	FDT_ERRTABENT(FDT_ERR_BADOVERLAY),
+scripts/dtc/libfdt/libfdt.h:91:#define FDT_ERR_BADOVERLAY	16
+scripts/dtc/libfdt/libfdt.h:92:	/* FDT_ERR_BADOVERLAY: The device tree overlay, while
+scripts/dtc/libfdt/libfdt.h:2056: *	-FDT_ERR_BADOVERLAY,
+Binary file scripts/dtc/ufdt_apply_overlay matches
+scripts/selinux/mdp/mdp.c:195:#ifdef CONFIG_OVERLAY_FS
+security/samsung/five/five_appraise.c:53:	    inode->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC ||
+security/samsung/five/five_porting.h:30:/* OVERLAYFS_SUPER_MAGIC is defined since v4.5.0 */
+security/samsung/five/five_porting.h:31:#ifndef OVERLAYFS_SUPER_MAGIC
+security/samsung/five/five_porting.h:32:#define OVERLAYFS_SUPER_MAGIC 0x794c7630
+security/samsung/five/five_porting.h:206:	if (inode->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC && file->private_data)
+security/samsung/five/gki/five_appraise.c:247:	    inode->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC ||
+security/samsung/five/gki/five_iint.c:220:	if (inode->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC && file->private_data)
+security/samsung/five/gki/five_vfs.c:125:	if (inode->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC && file->private_data)
+security/samsung/proca/proca_lsm.c:253:	if (locks_inode(file)->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC &&
+security/samsung/proca/proca_porting.h:140:#ifndef OVERLAYFS_SUPER_MAGIC
+security/samsung/proca/proca_porting.h:141:#define OVERLAYFS_SUPER_MAGIC 0x794c7630
+security/samsung/proca/s_os/proca_lsm.c:163:	if (locks_inode(file)->i_sb->s_magic == OVERLAYFS_SUPER_MAGIC &&
+setup/build_kernel.sh:126:	cp "$KERNEL_DTB_DIR/mt8781_gta9_eur_open_00.dtbo" "$OUTPUT_DIRECTORY_PATH/dtbo"
+setup/build_kernel.sh:147:    echo " DTBO binary file is ready as out/dtbo"
+setup/kernel/build/build.sh:969:OVERLAYS_OUT=""
+setup/kernel/build/build.sh:971:  OVERLAY_DIR=${ROOT_DIR}/device/${ODM_DIR}/overlays
+setup/kernel/build/build.sh:973:  if [ -d ${OVERLAY_DIR} ]; then
+setup/kernel/build/build.sh:974:    OVERLAY_OUT_DIR=${OUT_DIR}/overlays/${ODM_DIR}
+setup/kernel/build/build.sh:975:    mkdir -p ${OVERLAY_OUT_DIR}
+setup/kernel/build/build.sh:976:    make -C ${OVERLAY_DIR} DTC=${OUT_DIR}/scripts/dtc/dtc                     \
+setup/kernel/build/build.sh:977:                           OUT_DIR=${OVERLAY_OUT_DIR} "${MAKE_ARGS[@]}"
+setup/kernel/build/build.sh:978:    OVERLAYS=$(find ${OVERLAY_OUT_DIR} -name "*.dtbo")
+setup/kernel/build/build.sh:979:    OVERLAYS_OUT="$OVERLAYS_OUT $OVERLAYS"
+setup/kernel/build/build.sh:994:for FILE in ${OVERLAYS_OUT}; do
+setup/kernel/build/build.sh:995:  OVERLAY_DIST_DIR=${DIST_DIR}/$(dirname ${FILE#${OUT_DIR}/overlays/})
+setup/kernel/build/build.sh:997:  mkdir -p ${OVERLAY_DIST_DIR}
+setup/kernel/build/build.sh:998:  cp ${FILE} ${OVERLAY_DIST_DIR}/
+sound/pci/cs46xx/dsp_spos.c:145:		if (!strcmp(module->symbol_table.symbols[0].symbol_name, "OVERLAYBEGINADDRESS") &&
+sound/pci/hda/patch_ca0132.c:53:#define DMA_OVERLAY_FRAME_SIZE_NWORDS		2
+sound/pci/hda/patch_ca0132.c:3439:			router_chans = DMA_OVERLAY_FRAME_SIZE_NWORDS;
+tools/include/uapi/drm/i915_drm.h:340:#define DRM_I915_OVERLAY_PUT_IMAGE	0x27
+tools/include/uapi/drm/i915_drm.h:341:#define DRM_I915_OVERLAY_ATTRS	0x28
+tools/include/uapi/drm/i915_drm.h:406:#define DRM_IOCTL_I915_OVERLAY_PUT_IMAGE	DRM_IOW(DRM_COMMAND_BASE + DRM_I915_OVERLAY_PUT_IMAGE, struct drm_intel_overlay_put_image)
+tools/include/uapi/drm/i915_drm.h:407:#define DRM_IOCTL_I915_OVERLAY_ATTRS	DRM_IOWR(DRM_COMMAND_BASE + DRM_I915_OVERLAY_ATTRS, struct drm_intel_overlay_attrs)
+tools/include/uapi/drm/i915_drm.h:476:#define I915_PARAM_HAS_OVERLAY           7
+tools/include/uapi/drm/i915_drm.h:1464:#define I915_OVERLAY_TYPE_MASK 		0xff
+tools/include/uapi/drm/i915_drm.h:1465:#define I915_OVERLAY_YUV_PLANAR 	0x01
+tools/include/uapi/drm/i915_drm.h:1466:#define I915_OVERLAY_YUV_PACKED 	0x02
+tools/include/uapi/drm/i915_drm.h:1467:#define I915_OVERLAY_RGB		0x03
+tools/include/uapi/drm/i915_drm.h:1469:#define I915_OVERLAY_DEPTH_MASK		0xff00
+tools/include/uapi/drm/i915_drm.h:1470:#define I915_OVERLAY_RGB24		0x1000
+tools/include/uapi/drm/i915_drm.h:1471:#define I915_OVERLAY_RGB16		0x2000
+tools/include/uapi/drm/i915_drm.h:1472:#define I915_OVERLAY_RGB15		0x3000
+tools/include/uapi/drm/i915_drm.h:1473:#define I915_OVERLAY_YUV422		0x0100
+tools/include/uapi/drm/i915_drm.h:1474:#define I915_OVERLAY_YUV411		0x0200
+tools/include/uapi/drm/i915_drm.h:1475:#define I915_OVERLAY_YUV420		0x0300
+tools/include/uapi/drm/i915_drm.h:1476:#define I915_OVERLAY_YUV410		0x0400
+tools/include/uapi/drm/i915_drm.h:1478:#define I915_OVERLAY_SWAP_MASK		0xff0000
+tools/include/uapi/drm/i915_drm.h:1479:#define I915_OVERLAY_NO_SWAP		0x000000
+tools/include/uapi/drm/i915_drm.h:1480:#define I915_OVERLAY_UV_SWAP		0x010000
+tools/include/uapi/drm/i915_drm.h:1481:#define I915_OVERLAY_Y_SWAP		0x020000
+tools/include/uapi/drm/i915_drm.h:1482:#define I915_OVERLAY_Y_AND_UV_SWAP	0x030000
+tools/include/uapi/drm/i915_drm.h:1484:#define I915_OVERLAY_FLAGS_MASK		0xff000000
+tools/include/uapi/drm/i915_drm.h:1485:#define I915_OVERLAY_ENABLE		0x01000000
+tools/include/uapi/drm/i915_drm.h:1513:#define I915_OVERLAY_UPDATE_ATTRS	(1<<0)
+tools/include/uapi/drm/i915_drm.h:1514:#define I915_OVERLAY_UPDATE_GAMMA	(1<<1)
+tools/include/uapi/drm/i915_drm.h:1515:#define I915_OVERLAY_DISABLE_DEST_COLORKEY	(1<<2)

@@ -1,0 +1,558 @@
+=== BUILD CONFIG ===
+./build.config.aarch64
+./build.config.allmodconfig
+./build.config.allmodconfig.aarch64
+./build.config.allmodconfig.arm
+./build.config.allmodconfig.x86_64
+./build.config.amlogic
+./build.config.arm
+./build.config.common
+./build.config.db845c
+./build.config.fail
+./build.config.gki
+./build.config.gki-debug.aarch64
+./build.config.gki-debug.x86_64
+./build.config.gki.aarch64
+./build.config.gki.aarch64.fips140
+./build.config.gki.aarch64.fips140_eval_testing
+./build.config.gki.x86_64
+./build.config.gki_kasan
+./build.config.gki_kasan.aarch64
+./build.config.gki_kasan.x86_64
+./build.config.gki_kprobes
+./build.config.gki_kprobes.aarch64
+./build.config.gki_kprobes.x86_64
+./build.config.hikey960
+./build.config.khwasan
+./build.config.lto_thin
+./build.config.mtk.aarch64
+./build.config.mtk.aarch64.gcc
+./build.config.mtk.aarch64.kasan
+./build.config.mtk.aarch64.ubsan
+./build.config.mtk.arm
+./build.config.mtk.check_gki
+./build.config.rockchip
+./build.config.x86_64
+./setup/kernel/build/build.config.net_test
+
+===== ./build.config.aarch64 =====
+ARCH=arm64
+
+LLVM_IAS=1
+CROSS_COMPILE=aarch64-linux-gnu-
+CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gas/linux-x86
+
+MAKE_GOALS="
+Image
+modules
+"
+
+FILES="
+arch/arm64/boot/Image
+vmlinux
+System.map
+vmlinux.symvers
+modules.builtin
+modules.builtin.modinfo
+"
+===== ./build.config.allmodconfig =====
+DEFCONFIG=allmodconfig
+
+HERMETIC_TOOLCHAIN=0
+
+POST_DEFCONFIG_CMDS="update_config"
+function update_config() {
+    ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+         -d TEST_KMOD  \
+         -d CPU_BIG_ENDIAN \
+         -d DYNAMIC_FTRACE \
+         -e UNWINDER_FRAME_POINTER \
+
+    (cd ${OUT_DIR} && \
+     make O=${OUT_DIR} $archsubarch CROSS_COMPILE=${CROSS_COMPILE} "${TOOL_ARGS[@]}" ${MAKE_ARGS} olddefconfig)
+}
+===== ./build.config.allmodconfig.aarch64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.allmodconfig
+
+===== ./build.config.allmodconfig.arm =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.arm
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.allmodconfig
+
+===== ./build.config.allmodconfig.x86_64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.x86_64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.allmodconfig
+
+===== ./build.config.amlogic =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.aarch64
+
+DEFCONFIG=amlogic_gki_defconfig
+PRE_DEFCONFIG_CMDS="KCONFIG_CONFIG=${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG} ${ROOT_DIR}/${KERNEL_DIR}/scripts/kconfig/merge_config.sh -m -r ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/gki_defconfig ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/amlogic_gki.fragment"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
+
+# needed for DT overlay support
+DTC_FLAGS="-@"
+
+MAKE_GOALS="${MAKE_GOALS}
+dtbs
+"
+
+FILES="${FILES}
+arch/arm64/boot/Image.lz4
+arch/arm64/boot/dts/amlogic/meson-g12a-sei510*.dtb
+arch/arm64/boot/dts/amlogic/meson-sm1-sei610*.dtb
+arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l*.dtb
+arch/arm64/boot/dts/amlogic/meson-g12b-a311d-khadas-vim3*.dtb
+"
+
+#
+# NOTE: Using Image.lz4 in MAKE_GOALS does not work because
+#   kernel build passes legacy option (-l) to lz4 command
+#   and u-boot fails to decompress.  Instead, add custom
+#   command to lz4 compress same options as kernel, but
+#   without the -l.
+#
+EXTRA_CMDS="lz4_compress"
+function lz4_compress() {
+        lz4 -f -12 --favor-decSpeed ${OUT_DIR}/arch/arm64/boot/Image ${OUT_DIR}/arch/arm64/boot/Image.lz4
+}
+===== ./build.config.arm =====
+ARCH=arm
+
+LLVM_IAS=1
+CROSS_COMPILE=arm-linux-gnueabi-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gas/linux-x86
+
+MAKE_GOALS="
+zImage
+modules
+"
+
+FILES="
+arch/arm/boot/zImage
+vmlinux
+System.map
+"
+===== ./build.config.common =====
+BRANCH=android12-5.10
+KMI_GENERATION=9
+
+LLVM=1
+DEPMOD=depmod
+DTC=dtc
+CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r416183b/bin
+BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
+
+KCFLAGS="${KCFLAGS} -D__ANDROID_COMMON_KERNEL__"
+EXTRA_CMDS=''
+STOP_SHIP_TRACEPRINTK=1
+IN_KERNEL_MODULES=1
+DO_NOT_STRIP_MODULES=1
+
+HERMETIC_TOOLCHAIN=${HERMETIC_TOOLCHAIN:-1}
+===== ./build.config.db845c =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+
+BUILD_INITRAMFS=1
+DEFCONFIG=db845c_gki_defconfig
+FRAGMENT_CONFIG=${KERNEL_DIR}/arch/arm64/configs/db845c_gki.fragment
+PRE_DEFCONFIG_CMDS="KCONFIG_CONFIG=${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG} ${ROOT_DIR}/${KERNEL_DIR}/scripts/kconfig/merge_config.sh -m -r ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/gki_defconfig ${ROOT_DIR}/${FRAGMENT_CONFIG}"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
+
+DTC_FLAGS="${DTC_FLAGS} -@"
+
+MAKE_GOALS="${MAKE_GOALS}
+qcom/sdm845-db845c.dtb
+Image.gz
+"
+
+FILES="${FILES}
+arch/arm64/boot/Image.gz
+arch/arm64/boot/dts/qcom/sdm845-db845c.dtb
+vmlinux
+"
+KMI_SYMBOL_LIST=android/abi_gki_aarch64_db845c
+GKI_MODULES_LIST=android/gki_aarch64_modules
+===== ./build.config.fail =====
+ARCH=arm64
+CROSS_COMPILE=aarch64-linux-gnu-
+LD_LIBRARY_PATH=prebuilts/clang/host/linux-x86/clang-r383902/lib64:$$LD_LIBRARY_PATH
+# DEFCONFIG=defconfig
+KERNEL_DIR=kernel-mainline
+CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-r383902/bin
+BUILDTOOLS_PREBUILT_BIN=prebuilts/build-tools/linux-x86/bin
+PATH=/usr/bin:/bin:$$PATH
+DEFCONFIG="gki_defconfig ../../../../${OUT_DIR}/k6873v1_64_gki.config eng.config"
+PRE_DEFCONFIG_CMDS="cp -p ${KERNEL_DIR}/arch/arm64/configs/k6873v1_64_gki_defconfig ${OUT_DIR}/k6873v1_64_gki.config"
+EXT_MODULES=""
+DIST_CMDS='cp -p ${OUT_DIR}/.config ${DIST_DIR}'
+===== ./build.config.gki =====
+DEFCONFIG=gki_defconfig
+POST_DEFCONFIG_CMDS="check_defconfig"
+
+===== ./build.config.gki-debug.aarch64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.aarch64
+TRIM_NONLISTED_KMI=""
+KMI_SYMBOL_LIST_STRICT_MODE=""
+===== ./build.config.gki-debug.x86_64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.x86_64
+TRIM_NONLISTED_KMI=""
+KMI_SYMBOL_LIST_STRICT_MODE=""
+===== ./build.config.gki.aarch64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki
+
+MAKE_GOALS="${MAKE_GOALS}
+Image.lz4
+"
+
+ABI_DEFINITION=android/abi_gki_aarch64.xml
+TIDY_ABI=1
+KMI_SYMBOL_LIST=android/abi_gki_aarch64
+ADDITIONAL_KMI_SYMBOL_LISTS="
+android/abi_gki_aarch64_type_visibility
+android/abi_gki_aarch64_arg
+android/abi_gki_aarch64_core
+android/abi_gki_aarch64_db845c
+android/abi_gki_aarch64_exynos
+android/abi_gki_aarch64_exynosauto
+android/abi_gki_aarch64_fips140
+android/abi_gki_aarch64_galaxy
+android/abi_gki_aarch64_generic
+android/abi_gki_aarch64_hikey960
+android/abi_gki_aarch64_honor
+android/abi_gki_aarch64_imx
+android/abi_gki_aarch64_lenovo
+android/abi_gki_aarch64_moto
+android/abi_gki_aarch64_mtk
+android/abi_gki_aarch64_nothing
+android/abi_gki_aarch64_oplus
+android/abi_gki_aarch64_qcom
+android/abi_gki_aarch64_rockchip
+android/abi_gki_aarch64_unisoc
+android/abi_gki_aarch64_virtual_device
+android/abi_gki_aarch64_vivo
+android/abi_gki_aarch64_xiaomi
+android/abi_gki_aarch64_zebra
+android/abi_gki_aarch64_asus
+android/abi_gki_aarch64_transsion
+android/abi_gki_aarch64_tuxera
+"
+
+FILES="${FILES}
+arch/arm64/boot/Image.lz4
+"
+
+TRIM_NONLISTED_KMI=${TRIM_NONLISTED_KMI:-1}
+KMI_SYMBOL_LIST_STRICT_MODE=${KMI_SYMBOL_LIST_STRICT_MODE:-1}
+MODULES_ORDER=android/gki_aarch64_modules
+KMI_ENFORCED=1
+
+if [ -n "${GKI_DEFCONFIG_FRAGMENT}" ]; then
+source ${GKI_DEFCONFIG_FRAGMENT}
+fi
+===== ./build.config.gki.aarch64.fips140 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.aarch64
+
+FILES="${FILES}
+crypto/fips140.ko
+"
+
+if [ "${LTO}" = "none" ]; then
+	echo "The FIPS140 module needs LTO to be enabled."
+	exit 1
+fi
+
+MODULES_ORDER=android/gki_aarch64_fips140_modules
+
+DEFCONFIG=fips140_gki_defconfig
+KMI_SYMBOL_LIST=android/abi_gki_aarch64_fips140
+PRE_DEFCONFIG_CMDS="cat ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/gki_defconfig ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/fips140_gki.fragment > ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG};"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
+KMI_SYMBOL_LIST_ADD_ONLY=1
+===== ./build.config.gki.aarch64.fips140_eval_testing =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.aarch64.fips140
+
+PRE_DEFCONFIG_CMDS+=" cat ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/fips140_gki_eval_testing.fragment >> ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG};"
+===== ./build.config.gki.x86_64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.x86_64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki
+
+===== ./build.config.gki_kasan =====
+DEFCONFIG=gki_defconfig
+POST_DEFCONFIG_CMDS="check_defconfig && update_kasan_config"
+KERNEL_DIR=common
+function update_kasan_config() {
+    ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+         -e CONFIG_KASAN \
+         -e CONFIG_KASAN_INLINE \
+         -e CONFIG_KCOV \
+         -e CONFIG_PANIC_ON_WARN_DEFAULT_ENABLE \
+         -d CONFIG_RANDOMIZE_BASE \
+         -d CONFIG_KASAN_OUTLINE \
+         --set-val CONFIG_FRAME_WARN 0 \
+         -d LTO_CLANG_THIN \
+         -d LTO_CLANG_FULL \
+         -d CFI_PERMISSIVE \
+         -d CFI_CLANG \
+         -d SHADOW_CALL_STACK
+    (cd ${OUT_DIR} && \
+     make ${CC_LD_ARG} O=${OUT_DIR} olddefconfig)
+}
+
+===== ./build.config.gki_kasan.aarch64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki_kasan
+===== ./build.config.gki_kasan.x86_64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.x86_64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki_kasan
+
+===== ./build.config.gki_kprobes =====
+DEFCONFIG=gki_defconfig
+POST_DEFCONFIG_CMDS="check_defconfig && update_kprobes_config"
+function update_kprobes_config() {
+    ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+         -d LTO_CLANG_THIN \
+         -d LTO_CLANG_FULL \
+         -d CFI_PERMISSIVE \
+         -d CFI_CLANG \
+         -e CONFIG_DYNAMIC_FTRACE \
+         -e CONFIG_FUNCTION_TRACER \
+         -e CONFIG_IRQSOFF_TRACER \
+         -e CONFIG_FUNCTION_PROFILER \
+         -e CONFIG_PREEMPT_TRACER \
+         -e CONFIG_CHECKPOINT_RESTORE \
+         -d CONFIG_RANDOMIZE_BASE
+    (cd ${OUT_DIR} && \
+     make ${CC_LD_ARG} O=${OUT_DIR} olddefconfig)
+}
+
+===== ./build.config.gki_kprobes.aarch64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki_kprobes
+
+===== ./build.config.gki_kprobes.x86_64 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.x86_64
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki_kprobes
+
+===== ./build.config.hikey960 =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.aarch64
+
+DEFCONFIG=hikey960_gki_defconfig
+PRE_DEFCONFIG_CMDS="cat ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/gki_defconfig ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/hikey960_gki.fragment > ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG};"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
+
+EXT_MODULES="
+hikey-modules/midgard
+"
+
+MAKE_GOALS="${MAKE_GOALS}
+hisilicon/hi3660-hikey960.dtb
+Image.gz
+"
+
+FILES="${FILES}
+arch/arm64/boot/Image.gz
+arch/arm64/boot/dts/hisilicon/hi3660-hikey960.dtb
+vmlinux
+System.map
+"
+KMI_SYMBOL_LIST=android/abi_gki_aarch64_hikey960
+GKI_MODULES_LIST=android/gki_aarch64_modules
+===== ./build.config.khwasan =====
+append_cmd POST_DEFCONFIG_CMDS update_khwasan_config
+
+function update_khwasan_config() {
+  ${KERNEL_DIR}/scripts/config --file ${OUT_DIR}/.config \
+    -e CONFIG_KASAN \
+    -d CONFIG_KASAN_HW_TAGS \
+    -e CONFIG_KASAN_SW_TAGS \
+    -e CONFIG_KASAN_OUTLINE \
+    -e CONFIG_KASAN_PANIC_ON_WARN \
+    -e CONFIG_KCOV \
+    -e CONFIG_PANIC_ON_WARN_DEFAULT_ENABLE \
+    -d CONFIG_RANDOMIZE_BASE \
+    --set-val CONFIG_FRAME_WARN 0 \
+    -d SHADOW_CALL_STACK
+  (cd ${OUT_DIR} && \
+   make O=${OUT_DIR} "${TOOL_ARGS[@]}" ${MAKE_ARGS} olddefconfig)
+}
+===== ./build.config.lto_thin =====
+LTO=thin
+===== ./build.config.mtk.aarch64 =====
+ARCH=arm64
+CROSS_COMPILE=aarch64-linux-gnu-
+CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
+# DEFCONFIG=defconfig
+KERNEL_DIR=kernel-5.10
+# CLANG_PREBUILT_BIN=../prebuilts/clang/host/linux-x86/clang-r416183b/bin
+# BUILDTOOLS_PREBUILT_BIN=build/build-tools/path/linux-x86
+# for check scripts
+# CC=clang
+# LD=ld.lld
+# AR=llvm-ar
+# NM=llvm-nm
+# OBJCOPY=llvm-objcopy
+# OBJDUMP=llvm-objdump
+# READELF=llvm-readelf
+# OBJSIZE=llvm-size
+# STRIP=llvm-strip
+FILES="vmlinux"
+ABI_OUT_TAG="mtk"
+KMI_SYMBOL_LIST=android/abi_gki_aarch64_mtk
+GKI_MODULES_LIST=android/gki_aarch64_modules
+ABI_DEFINITION=android/abi_gki_aarch64.xml
+SKIP_CP_KERNEL_HDR=1
+
+# Strip kernel modules
+DO_NOT_STRIP_MODULES=0
+
+# Build flavour
+TARGET_BUILD_VARIANT=user
+
+MAKE_GOALS="${MAKE_GOALS} Image.gz dtbs"
+
+# Processor
+CONFIG_MTK_PLATFORM=mt6789
+
+# GPU
+export CONFIG_MACH_MT6789=y
+export CONFIG_MTK_GPU_VERSION="mali valhall r32p1 mt6789"
+export CONFIG_MALI_BASE_MODULES=y
+
+# Wlan Adaptor
+export WLAN_ADAPTOR_MODULE_NAME="wmt_chrdev_wifi"
+
+# Wlan Core gen4m
+export WLAN_MODULE_NAME="wlan_drv_gen4m_6789"
+export CONFIG_MTK_COMBO_WIFI_HIF=axi
+export MTK_COMBO_CHIP=SOC2_1X1
+export BT_PLATFORM=connac1x
+export WLAN_CHIP_ID=6789
+export MTK_ANDROID_WMT=y
+export MTK_ANDROID_EMI=y
+export WIFI_IP_SET=1
+export MTK_WLAN_SERVICE=yes
+
+# Bluetooth configuration
+export BT_PLATFORM="connac1x"
+
+# FMRadio
+export CFG_FM_PLAT="mt6631_6635"
+export CFG_FM_CHIP_ID="${CFG_FM_PLAT}"
+===== ./build.config.mtk.aarch64.gcc =====
+===== ./build.config.mtk.aarch64.kasan =====
+ARCH=arm64
+CROSS_COMPILE=aarch64-linux-gnu-
+LLVM=1
+LLVM_IAS=1
+# DEFCONFIG=defconfig
+KERNEL_DIR=kernel-5.10
+# CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-r416183b/bin
+# BUILDTOOLS_PREBUILT_BIN=prebuilts/build-tools/linux-x86/bin
+# for check scripts
+CC=clang
+LD=ld.lld
+AR=llvm-ar
+NM=llvm-nm
+OBJCOPY=llvm-objcopy
+OBJDUMP=llvm-objdump
+READELF=llvm-readelf
+OBJSIZE=llvm-size
+STRIP=llvm-strip
+===== ./build.config.mtk.aarch64.ubsan =====
+ARCH=arm64
+CROSS_COMPILE=aarch64-linux-gnu-
+LLVM=1
+LLVM_IAS=1
+# DEFCONFIG=defconfig
+KERNEL_DIR=kernel-5.10
+# CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-r416183b/bin
+# BUILDTOOLS_PREBUILT_BIN=prebuilts/build-tools/linux-x86/bin
+# for check scripts
+CC=clang
+LD=ld.lld
+AR=llvm-ar
+NM=llvm-nm
+OBJCOPY=llvm-objcopy
+OBJDUMP=llvm-objdump
+READELF=llvm-readelf
+OBJSIZE=llvm-size
+STRIP=llvm-strip
+===== ./build.config.mtk.arm =====
+ARCH=arm
+CROSS_COMPILE=arm-linux-gnueabi-
+LLVM=1
+# DEFCONFIG=defconfig
+KERNEL_DIR=kernel-5.10
+# CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-r383902/bin
+# BUILDTOOLS_PREBUILT_BIN=prebuilts/build-tools/linux-x86/bin
+# for check scripts
+CC=clang
+LD=ld.lld
+AR=llvm-ar
+NM=llvm-nm
+OBJCOPY=llvm-objcopy
+OBJDUMP=llvm-objdump
+READELF=llvm-readelf
+OBJSIZE=llvm-size
+STRIP=llvm-strip
+===== ./build.config.mtk.check_gki =====
+MTK_CHECK_GKI_CMDS="python3 ${KERNEL_DIR}/scripts/gki_checker.py -k ${KERNEL_DIR} -g ${ROOT_DIR}/../vendor/aosp_gki/${KERNEL_DIR}/aarch64/vmlinux-userdebug -m ${OUT_DIR}/${KERNEL_DIR}/vmlinux -w ${KERNEL_DIR}/scripts/gki_checker_white_list.txt -t ${ROOT_DIR}/${CLANG_PREBUILT_BIN}/ -O ${OUT_DIR}/check_gki/ -c ${KERNEL_DIR}/scripts/extract-ikconfig"
+
+POST_KERNEL_BUILD_CMDS="${MTK_CHECK_GKI_CMDS} -o file && ${MTK_CHECK_GKI_CMDS} -o config && ${MTK_CHECK_GKI_CMDS} -o symbol"
+===== ./build.config.rockchip =====
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gki.aarch64
+
+
+DEFCONFIG=rockchip_aarch64_gki_defconfig
+KMI_SYMBOL_LIST=android/abi_gki_aarch64_rockchip
+PRE_DEFCONFIG_CMDS="KCONFIG_CONFIG=${ROOT_DIR}/common/arch/arm64/configs/${DEFCONFIG} ${ROOT_DIR}/common/scripts/kconfig/merge_config.sh -m -r ${ROOT_DIR}/common/arch/arm64/configs/gki_defconfig ${ROOT_DIR}/common/arch/arm64/configs/rockchip_gki.fragment"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/common/arch/arm64/configs/${DEFCONFIG}"
+
+===== ./build.config.x86_64 =====
+ARCH=x86_64
+
+LLVM_IAS=1
+CROSS_COMPILE=x86_64-linux-gnu-
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gas/linux-x86
+
+MAKE_GOALS="
+bzImage
+modules
+prepare-objtool
+"
+
+FILES="
+arch/x86/boot/bzImage
+vmlinux
+System.map
+vmlinux.symvers
+modules.builtin
+modules.builtin.modinfo
+"
+===== ./setup/kernel/build/build.config.net_test =====
+ARCH=um
+SUBARCH=x86_64
+CC=${CC:-clang}
+CLANG_TRIPLE=x86_64-linux-gnu-
+CROSS_COMPILE=x86_64-linux-androidkernel-
+EXTRA_CMDS=''
+KERNEL_DIR=$(. $(dirname $0)/build.config && echo $KERNEL_DIR || echo common)
+CLANG_PREBUILT_BIN=prebuilts-master/clang/host/linux-x86/clang-r383902/bin
+LINUX_GCC_CROSS_COMPILE_PREBUILTS_BIN=prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/bin
+FILES="
+linux
+"

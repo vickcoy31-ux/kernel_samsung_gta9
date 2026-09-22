@@ -1,0 +1,4 @@
+origin	https://github.com/vickcoy31-ux/kernel_samsung_gta9.git (fetch)
+origin	https://github.com/vickcoy31-ux/kernel_samsung_gta9.git (push)
+upstream	https://github.com/prabhatkrmishra/kernel_samsung_gta9 (fetch)
+upstream	https://github.com/prabhatkrmishra/kernel_samsung_gta9 (push)
