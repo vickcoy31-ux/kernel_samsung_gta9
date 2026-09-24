@@ -58,10 +58,11 @@ jobs:
 
       - name: Prepare build tree
         run: |
-          cd master/kernel-5.10
-          chmod +x setup/setup_env.sh
-          ./setup/setup_env.sh
-          chmod +x ../build_kernel.sh
+          cd master
+          cd kernel-5.10/setup
+          ./setup_env.sh
+          cd ../..
+          chmod +x build_kernel.sh
 
       - name: Build kernel
         run: |
