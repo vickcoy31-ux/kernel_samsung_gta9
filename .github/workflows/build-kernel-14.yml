@@ -16,11 +16,11 @@ jobs:
           path: master/kernel-5.10
           submodules: false
 
-      - name: Init KernelSU submodule
+      - name: Fetch KernelSU
         run: |
           cd master/kernel-5.10
-          git config -f .gitmodules submodule.KernelSU.url https://github.com/tiann/KernelSU.git
-          git submodule update --init --recursive
+          rm -rf KernelSU
+          git clone --depth 1 https://github.com/tiann/KernelSU.git KernelSU
 
       - name: Install dependencies
         run: |
