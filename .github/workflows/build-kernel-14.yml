@@ -14,7 +14,13 @@ jobs:
         with:
           ref: '14.0'
           path: master/kernel-5.10
-          submodules: recursive
+          submodules: false
+
+      - name: Init KernelSU submodule
+        run: |
+          cd master/kernel-5.10
+          git config -f .gitmodules submodule.KernelSU.url https://github.com/tiann/KernelSU.git
+          git submodule update --init --recursive
 
       - name: Install dependencies
         run: |
@@ -53,7 +59,6 @@ jobs:
       - name: Prepare build tree
         run: |
           cd master/kernel-5.10
-          git submodule update --init --recursive
           chmod +x setup/setup_env.sh
           ./setup/setup_env.sh
           chmod +x ../build_kernel.sh
