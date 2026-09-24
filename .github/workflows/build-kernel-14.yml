@@ -58,16 +58,17 @@ jobs:
 
       - name: Prepare build tree
         run: |
-          cd master
-          cd kernel-5.10/setup
-          ./setup_env.sh
-          cd ../..
-          chmod +x build_kernel.sh
+          cd master/kernel-5.10
+          cp -r setup/kernel ../kernel
+          cp -r setup/vendor ../vendor
+          cp setup/build_kernel.sh ../build_kernel.sh
+          chmod +x ../build_kernel.sh
 
       - name: Build kernel
         run: |
           cd master
           ./build_kernel.sh --new
+          test -f out/Image.gz && echo "KERNEL OK" || { echo "KERNEL BUILD FAILED"; exit 1; }
 
       - name: Collect outputs
         run: |
