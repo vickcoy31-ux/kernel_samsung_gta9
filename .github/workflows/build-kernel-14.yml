@@ -1,1 +1,81 @@
+name: Build GTA9 Kernel 14.0
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
           ref: '14.0'
+          path: master/kernel-5.10
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison build-essential curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick liblz4-tool libncurses5-dev libssl-dev lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python3 python3-pip
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pyyaml
+
+      - name: Setup clang (Android 14 toolchain)
+        run: |
+          mkdir -p master/prebuilts/clang/host/linux-x86
+          cd master/prebuilts/clang/host/linux-x86
+          curl -L --retry 5 -o clang.tar.gz "https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master/clang-r522817.tar.gz"
+          mkdir -p clang-r522817
+          tar -xzf clang.tar.gz -C clang-r522817
+          rm clang.tar.gz
+
+      - name: Setup GCC aarch64 prebuilt
+        run: |
+          mkdir -p master/prebuilts/gcc/linux-x86/aarch64
+          cd master/prebuilts/gcc/linux-x86/aarch64
+          curl -L --retry 5 -o gcc.tar.gz "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/refs/heads/master.tar.gz"
+          mkdir -p aarch64-linux-android-4.9
+          tar -xzf gcc.tar.gz -C aarch64-linux-android-4.9
+          rm gcc.tar.gz
+
+      - name: Setup GCC arm prebuilt
+        run: |
+          mkdir -p master/prebuilts/gcc/linux-x86/arm
+          cd master/prebuilts/gcc/linux-x86/arm
+          curl -L --retry 5 -o gcc.tar.gz "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/master.tar.gz"
+          mkdir -p arm-linux-androideabi-4.9
+          tar -xzf gcc.tar.gz -C arm-linux-androideabi-4.9
+          rm gcc.tar.gz
+
+      - name: Prepare build tree
+        run: |
+          cd master/kernel-5.10
+          git submodule update --init --recursive
+          chmod +x setup/setup_env.sh
+          ./setup/setup_env.sh
+          chmod +x ../build_kernel.sh
+
+      - name: Build kernel
+        run: |
+          cd master
+          ./build_kernel.sh --new
+
+      - name: Collect outputs
+        run: |
+          ls -la out/ 2>/dev/null || true
+          mkdir -p artifacts
+          cp out/Image.gz out/dtb out/dtbo artifacts/ 2>/dev/null || true
+          cp -r out/vendor_boot_modules artifacts/ 2>/dev/null || true
+          cp -r out/vendor_dlkm_modules artifacts/ 2>/dev/null || true
+          ls -laR artifacts/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gta9-kernel-14.0
+          path: |
+            artifacts/**
+          if-no-files-found: warn
