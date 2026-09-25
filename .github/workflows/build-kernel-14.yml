@@ -5,8 +5,7 @@ on:
 
 jobs:
   build:
-    # Menggunakan 22.04 karena 24.04 terlalu baru untuk kernel 5.10
-    runs-on: ubuntu-22.04 
+    runs-on: ubuntu-22.04
     timeout-minutes: 240
 
     steps:
@@ -27,8 +26,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y bc bison build-essential curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick liblz4-tool libncurses5-dev libssl-dev lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python3 python3-pip
-          python3 -m pip install --upgrade pip
-          python3 -m pip install pyyaml
 
       - name: Setup clang (ZyCromerZ 16.0.6)
         run: |
@@ -56,13 +53,20 @@ jobs:
           tar -xzf gcc.tar.gz -C arm-linux-androideabi-4.9
           rm gcc.tar.gz
 
-      - name: Prepare build tree
+      - name: Bedah Source (Force Remove SSG)
         run: |
           cd master/kernel-5.10
-          # Tambahkan patch otomatis menggunakan sed untuk mematikan SSG I/O Scheduler jika ada di defconfig
-          # Ini adalah solusi paling ampuh agar build tidak error di block/ssg-iosched.c
-          find . -name "*.config" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
+          # INI ADALAH KUNCI UTAMANYA: 
+          # Kita hapus/rename file yang bikin error agar compiler tidak menemukannya.
+          if [ -f block/ssg-iosched.c ]; then
+            mv block/ssg-iosched.c block/ssg-iosched.c.bak
+            echo "SSG I/O Scheduler has been disabled by renaming file."
+          fi
           
+          # Mematikan SSG di semua file config yang mungkin ada di source
+          find . -name "*.config" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
+          find . -name "*_defconfig" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
+
           cp -r setup/kernel ../kernel
           cp -r setup/vendor ../vendor
 
@@ -76,27 +80,24 @@ jobs:
           export LLVM_IAS=1
           export PATH="$PWD/../prebuilts/clang/host/linux-x86/clang/bin:$PATH"
           
-          # MENAMBAHKAN KCFLAGS UNTUK MENGABAIKAN ERROR IMPLICIT DECLARATION
-          # Ini agar compiler tidak berhenti saat menemukan fungsi yang tidak terdefinisi
-          export KCFLAGS="-Wno-error=implicit-function-declaration -Wno-implicit-function-declaration"
+          # Kita tetap gunakan flag ini sebagai pengaman tambahan
+          export KCFLAGS="-Wno-implicit-function-declaration -Wno-error=implicit-function-declaration"
           
           make O=../out gta9_00_defconfig
           
-          # Pastikan SSG dimatikan sekali lagi di .config yang baru tergenerate
+          # Pastikan SSG mati di config hasil generate
           sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' ../out/.config
           
           make O=../out -j$(nproc) Image
           
-          # Perbaikan pengecekan Image.gz menjadi Image karena make Image menghasilkan Image
+          # Cek file Image (tanpa .gz)
           test -f ../out/arch/arm64/boot/Image && echo "KERNEL OK" || { echo "KERNEL BUILD FAILED"; exit 1; }
 
       - name: Collect outputs
         run: |
           mkdir -p artifacts
-          # Mengambil Image asli dan mencari DTB di lokasi yang benar
           cp out/arch/arm64/boot/Image artifacts/ 2>/dev/null || true
           find out/arch/arm64/boot/dts -name "*.dtb" -exec cp {} artifacts/ \; 2>/dev/null || true
-          ls -laR artifacts/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
