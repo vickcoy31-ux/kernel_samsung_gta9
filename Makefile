@@ -521,7 +521,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \
 		   -Werror=implicit-function-declaration -Werror=implicit-int \
 		   -Werror=return-type -Wno-format-security \
-		   -std=gnu89 -Werror -Wno-error -Wno-deprecated-non-prototype -Wno-unused-function -Wno-unused-label -Wno-error=implicit-function-declaration 
+		   -std=gnu89 -Werror -Wno-error -Wno-deprecated-non-prototype -Wno-unused-function -Wno-unused-label -Wno-error=implicit-function-declaration -Wno-error=single-bit-bitfield-constant-conversion -Wno-error=unused-result 
 KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
