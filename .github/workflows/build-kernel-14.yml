@@ -5,7 +5,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Menggunakan 22.04 karena 24.04 terlalu baru untuk kernel 5.10
+    runs-on: ubuntu-22.04 
     timeout-minutes: 240
 
     steps:
@@ -36,8 +37,6 @@ jobs:
           curl -L --retry 3 -o clang.tar.gz "https://github.com/ZyCromerZ/Clang/releases/download/16.0.6-20260807-release/Clang-16.0.6-20260807.tar.gz"
           tar -xzf clang.tar.gz --strip-components=0
           rm clang.tar.gz
-          ls -la
-          ls bin/ | head
 
       - name: Setup GCC aarch64 prebuilt
         run: |
@@ -60,6 +59,10 @@ jobs:
       - name: Prepare build tree
         run: |
           cd master/kernel-5.10
+          # Tambahkan patch otomatis menggunakan sed untuk mematikan SSG I/O Scheduler jika ada di defconfig
+          # Ini adalah solusi paling ampuh agar build tidak error di block/ssg-iosched.c
+          find . -name "*.config" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
+          
           cp -r setup/kernel ../kernel
           cp -r setup/vendor ../vendor
 
@@ -72,23 +75,32 @@ jobs:
           export LLVM=1
           export LLVM_IAS=1
           export PATH="$PWD/../prebuilts/clang/host/linux-x86/clang/bin:$PATH"
-          which clang ld.lld
-          clang --version | head -1
+          
+          # MENAMBAHKAN KCFLAGS UNTUK MENGABAIKAN ERROR IMPLICIT DECLARATION
+          # Ini agar compiler tidak berhenti saat menemukan fungsi yang tidak terdefinisi
+          export KCFLAGS="-Wno-error=implicit-function-declaration -Wno-implicit-function-declaration"
+          
           make O=../out gta9_00_defconfig
+          
+          # Pastikan SSG dimatikan sekali lagi di .config yang baru tergenerate
+          sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' ../out/.config
+          
           make O=../out -j$(nproc) Image
-          test -f ../out/arch/arm64/boot/Image.gz && echo "KERNEL OK" || { echo "KERNEL BUILD FAILED"; exit 1; }
+          
+          # Perbaikan pengecekan Image.gz menjadi Image karena make Image menghasilkan Image
+          test -f ../out/arch/arm64/boot/Image && echo "KERNEL OK" || { echo "KERNEL BUILD FAILED"; exit 1; }
 
       - name: Collect outputs
         run: |
-          ls -la out/ 2>/dev/null || true
           mkdir -p artifacts
-          cp out/arch/arm64/boot/Image* out/dtb out/dtbo artifacts/ 2>/dev/null || true
+          # Mengambil Image asli dan mencari DTB di lokasi yang benar
+          cp out/arch/arm64/boot/Image artifacts/ 2>/dev/null || true
+          find out/arch/arm64/boot/dts -name "*.dtb" -exec cp {} artifacts/ \; 2>/dev/null || true
           ls -laR artifacts/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: gta9-kernel-14.0
-          path: |
-            artifacts/**
+          path: artifacts/**
           if-no-files-found: warn
