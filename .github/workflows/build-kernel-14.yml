@@ -1,4 +1,4 @@
-name: Build GTA9 Kernel 14.0
+name: Build GTA9 Kernel 14.0 FINAL
 
 on:
   workflow_dispatch:
@@ -53,20 +53,22 @@ jobs:
           tar -xzf gcc.tar.gz -C arm-linux-androideabi-4.9
           rm gcc.tar.gz
 
-      - name: Bedah Source (Force Remove SSG)
+      - name: Nuclear Option - Remove SSG Total
         run: |
           cd master/kernel-5.10
-          # INI ADALAH KUNCI UTAMANYA: 
-          # Kita hapus/rename file yang bikin error agar compiler tidak menemukannya.
-          if [ -f block/ssg-iosched.c ]; then
-            mv block/ssg-iosched.c block/ssg-iosched.c.bak
-            echo "SSG I/O Scheduler has been disabled by renaming file."
-          fi
           
-          # Mematikan SSG di semua file config yang mungkin ada di source
-          find . -name "*.config" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
+          # 1. Hapus file source penyebab error
+          rm -f block/ssg-iosched.c
+          
+          # 2. Hapus referensi ssg-iosched di semua Makefile (terutama di folder block)
+          # Ini agar compiler tidak mencari file yang sudah dihapus
+          find . -name "Makefile" -exec sed -i 's/ssg-iosched.o//g' {} +
+          find . -name "Makefile" -exec sed -i 's/obj-$(CONFIG_IOSCHED_SSG) += ssg-iosched.o//g' {} +
+          
+          # 3. Paksa matikan di semua defconfig
           find . -name "*_defconfig" -exec sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' {} +
-
+          
+          # 4. Persiapkan build tree
           cp -r setup/kernel ../kernel
           cp -r setup/vendor ../vendor
 
@@ -80,28 +82,39 @@ jobs:
           export LLVM_IAS=1
           export PATH="$PWD/../prebuilts/clang/host/linux-x86/clang/bin:$PATH"
           
-          # Kita tetap gunakan flag ini sebagai pengaman tambahan
+          # Tambahkan flag untuk mengabaikan warning yang bisa menjadi error
           export KCFLAGS="-Wno-implicit-function-declaration -Wno-error=implicit-function-declaration"
           
+          # Generate config
           make O=../out gta9_00_defconfig
           
-          # Pastikan SSG mati di config hasil generate
+          # Pastikan sekali lagi SSG mati di config hasil generate
           sed -i 's/CONFIG_IOSCHED_SSG=y/CONFIG_IOSCHED_SSG=n/g' ../out/.config
           
+          # Jalankan build
           make O=../out -j$(nproc) Image
           
-          # Cek file Image (tanpa .gz)
-          test -f ../out/arch/arm64/boot/Image && echo "KERNEL OK" || { echo "KERNEL BUILD FAILED"; exit 1; }
+          # VERIFIKASI: Cek file Image (BUKAN Image.gz)
+          if [ -f ../out/arch/arm64/boot/Image ]; then
+            echo "KERNEL BUILD SUCCESS"
+          else
+            echo "KERNEL BUILD FAILED"
+            exit 1
+          fi
 
       - name: Collect outputs
+        if: always()
         run: |
           mkdir -p artifacts
+          # Copy Image hasil build
           cp out/arch/arm64/boot/Image artifacts/ 2>/dev/null || true
+          # Cari semua file dtb
           find out/arch/arm64/boot/dts -name "*.dtb" -exec cp {} artifacts/ \; 2>/dev/null || true
 
       - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gta9-kernel-14.0
+          name: gta9-kernel-14.0-final
           path: artifacts/**
           if-no-files-found: warn
