@@ -52,7 +52,7 @@
 #if IS_ENABLED(CONFIG_DRM_MEDIATEK)
 #include "mtk_drm_arr.h"
 #else
-#include "disp_arr.h"
+#include "mtk_drm_arr.h"
 #endif
 
 #ifdef MTK_GED_KPI
