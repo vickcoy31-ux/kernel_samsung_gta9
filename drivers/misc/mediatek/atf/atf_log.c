@@ -361,7 +361,7 @@ static int atf_time_sync_resume(struct device *dev)
 
 static const struct proc_ops atf_log_proc_fops = {
 	.proc_ioctl = atf_log_ioctl,
-	.proc_compat_ioctl = atf_log_ioctl,
+/* .proc_compat_ioctl removed: field does not exist in struct proc_ops on kernel 5.10.205 */
 	.proc_poll       = atf_log_poll,
 	.proc_open       = atf_log_open,
 	.proc_release    = atf_log_release,
